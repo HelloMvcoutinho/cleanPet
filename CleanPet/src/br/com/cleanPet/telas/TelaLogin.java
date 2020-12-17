@@ -5,6 +5,7 @@
  */
 package br.com.cleanPet.telas;
 import br.com.cleanPet.dal.Conexao;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,13 +25,18 @@ public class TelaLogin extends javax.swing.JFrame {
             //as linhas preparam a consulta no banco em função ao formulario tela login substituindo o ?
             pst = conexao.prepareStatement(sql);
             pst.setString(1,txtUsuario.getText());
-            pst.setString(2,txtSenha.getText());
+            //pst.setString(2,txtSenha.getText());
+            String strPass = new String(txtSenha.getPassword());
+            pst.setString(2,strPass);
+            
             //executa a query
             rs = pst.executeQuery();
             //há usuário e senha correspondente abra a tela pricipal
             if(rs.next()){
                 TelaPrincipal principal = new TelaPrincipal();
                 principal.setVisible(true);
+                this.dispose();//fecha a tela de login
+                conexao.close();//fecha a conexão com o DB
             }else{
                 JOptionPane.showMessageDialog(null,"usuário e/ou senha invalido(s)");
             }
@@ -88,6 +94,17 @@ public class TelaLogin extends javax.swing.JFrame {
                 btnloginActionPerformed(evt);
             }
         });
+        btnlogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnloginKeyPressed(evt);
+            }
+        });
+
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,6 +153,20 @@ public class TelaLogin extends javax.swing.JFrame {
         // ao clicar no btnlogin chama o metodo logar
         logar();
     }//GEN-LAST:event_btnloginActionPerformed
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+        //ao clicar o Enter no campo txtSenha
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+            logar();
+        }
+    }//GEN-LAST:event_txtSenhaKeyPressed
+
+    private void btnloginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnloginKeyPressed
+        //ao clicar o Enter no campo btnlogin
+        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+            logar();
+        }
+    }//GEN-LAST:event_btnloginKeyPressed
 
     /**
      * @param args the command line arguments
