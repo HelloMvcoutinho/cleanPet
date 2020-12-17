@@ -26,11 +26,11 @@ public class TelaLogin extends javax.swing.JFrame {
         //a linha abaixo server de apoio ao status da conexao
         //System.out.println(conexao);
         if (conexao!= null){
-            lblStatus.setText("Conectato");
-          //lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/info/icones/dbok.png")));  
+            //lblStatus.setText("Conectado");
+          lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/dbok.png")));  
         }else{
-            lblStatus.setText("Não Conectato");
-          //lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/info/icones/dberror.png"))); 
+            //lblStatus.setText("Não Conectado");
+          lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/dberror.png"))); 
         }
     }
 
@@ -59,7 +59,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabel2.setText("Senha");
 
-        lblStatus.setText("Status");
+        lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/dberror.png"))); // NOI18N
 
         btnlogin.setText("Login");
 
@@ -72,7 +72,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(lblStatus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                         .addComponent(btnlogin))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +82,7 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                             .addComponent(jPasswordField1))))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,14 +95,14 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnlogin)
-                    .addComponent(lblStatus))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblStatus)
+                    .addComponent(btnlogin))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(386, 172));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
