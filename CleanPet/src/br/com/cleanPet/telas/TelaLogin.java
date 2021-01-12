@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package br.com.cleanPet.telas;
+
 import br.com.cleanPet.dal.Conexao;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
@@ -16,34 +17,46 @@ import javax.swing.JOptionPane;
  * @author MarcioC
  */
 public class TelaLogin extends javax.swing.JFrame {
+
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-    public void logar(){
+
+    public void logar() {
         String sql = "select * from tb_usuarios where login=? and senha=?";
         try {
             //as linhas preparam a consulta no banco em função ao formulario tela login substituindo o ?
             pst = conexao.prepareStatement(sql);
-            pst.setString(1,txtUsuario.getText());
+            pst.setString(1, txtUsuario.getText());
             //pst.setString(2,txtSenha.getText());
             String strPass = new String(txtSenha.getPassword());
-            pst.setString(2,strPass);
-            
+            pst.setString(2, strPass);
+
             //executa a query
             rs = pst.executeQuery();
             //há usuário e senha correspondente abra a tela pricipal
-            if(rs.next()){
-                TelaPrincipal principal = new TelaPrincipal();
-                principal.setVisible(true);
-                this.dispose();//fecha a tela de login
-                conexao.close();//fecha a conexão com o DB
-            }else{
-                JOptionPane.showMessageDialog(null,"usuário e/ou senha invalido(s)");
+            if (rs.next()) {
+                //busca o campo perfil na tabela tb_usuarios
+                String perfil = rs.getString(5);
+                //exibe o conteudo do campo da tabela
+                //System.out.println(perfil);
+                //trata o tipo de perfil do usuario
+                if (perfil.equals("admin")) {
+                    TelaPrincipal principal = new TelaPrincipal();
+                    principal.setVisible(true);
+                    TelaPrincipal.MenRel.setEnabled(true);
+                    TelaPrincipal.MenCadUsu.setEnabled(true);
+                    this.dispose();//fecha a tela de login
+                    conexao.close();//fecha a conexão com o DB
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "usuário e/ou senha invalido(s)");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+
     /**
      * Creates new form TelaLogin
      */
@@ -52,12 +65,12 @@ public class TelaLogin extends javax.swing.JFrame {
         conexao = Conexao.conector();
         //a linha abaixo server de apoio ao status da conexao
         //System.out.println(conexao);
-        if (conexao!= null){
+        if (conexao != null) {
             //lblStatus.setText("Conectado");
-          lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/dbok.png")));  
-        }else{
+            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/dbok.png")));
+        } else {
             //lblStatus.setText("Não Conectado");
-          lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/dberror.png"))); 
+            lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/dberror.png")));
         }
     }
 
@@ -156,14 +169,14 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         //ao clicar o Enter no campo txtSenha
-        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             logar();
         }
     }//GEN-LAST:event_txtSenhaKeyPressed
 
     private void btnloginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnloginKeyPressed
         //ao clicar o Enter no campo btnlogin
-        if(evt.getKeyCode()== KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             logar();
         }
     }//GEN-LAST:event_btnloginKeyPressed

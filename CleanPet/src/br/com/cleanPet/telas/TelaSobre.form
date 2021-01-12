@@ -68,7 +68,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sistema para contro agenda servi&#xe7;o de banho e tosa "/>
+        <Property name="text" type="java.lang.String" value="Sistema de agenda para servi&#xe7;o de banho e tosa "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">

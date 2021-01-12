@@ -36,7 +36,7 @@ public class TelaSobre extends javax.swing.JFrame {
         setTitle("Sobre");
         setResizable(false);
 
-        jLabel1.setText("Sistema para contro agenda serviço de banho e tosa ");
+        jLabel1.setText("Sistema de agenda para serviço de banho e tosa ");
 
         jLabel2.setText("Sistema desenvolvido por Marcio Coutinho");
 
