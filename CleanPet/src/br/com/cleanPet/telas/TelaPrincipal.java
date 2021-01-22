@@ -63,7 +63,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Desktop.setLayout(DesktopLayout);
         DesktopLayout.setHorizontalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 777, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -91,6 +91,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenCadUsu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.ALT_MASK));
         MenCadUsu.setText("Usuários");
         MenCadUsu.setEnabled(false);
+        MenCadUsu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenCadUsuActionPerformed(evt);
+            }
+        });
         MenCad.add(MenCadUsu);
 
         Menu.add(MenCad);
@@ -168,7 +173,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(82, 82, 82))
         );
 
-        setSize(new java.awt.Dimension(915, 523));
+        setSize(new java.awt.Dimension(949, 620));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -195,6 +200,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         TelaSobre sobre = new TelaSobre();
         sobre.setVisible(true);
     }//GEN-LAST:event_MenAjuSobActionPerformed
+
+    private void MenCadUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadUsuActionPerformed
+        // Vai abrir o form TelaUsuario dentro do desktop pane
+        TelaUsuario usuario = new TelaUsuario();
+        usuario.setVisible(true);
+        Desktop.add(usuario);
+    }//GEN-LAST:event_MenCadUsuActionPerformed
 
     /**
      * @param args the command line arguments

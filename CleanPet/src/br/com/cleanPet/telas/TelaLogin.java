@@ -51,6 +51,11 @@ public class TelaLogin extends javax.swing.JFrame {
                     TelaPrincipal.lblUsuario.setForeground(Color.red);
                     this.dispose();//fecha a tela de login
                     conexao.close();//fecha a conexão com o DB
+                }else{
+                    TelaPrincipal principal = new TelaPrincipal();
+                    principal.setVisible(true);
+                    TelaPrincipal.lblUsuario.setText(rs.getString(2));
+                    this.dispose();
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "usuário e/ou senha invalido(s)");
