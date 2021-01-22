@@ -6,6 +6,7 @@
 package br.com.cleanPet.telas;
 
 import br.com.cleanPet.dal.Conexao;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -46,6 +47,8 @@ public class TelaLogin extends javax.swing.JFrame {
                     principal.setVisible(true);
                     TelaPrincipal.MenRel.setEnabled(true);
                     TelaPrincipal.MenCadUsu.setEnabled(true);
+                    TelaPrincipal.lblUsuario.setText(rs.getString(2));
+                    TelaPrincipal.lblUsuario.setForeground(Color.red);
                     this.dispose();//fecha a tela de login
                     conexao.close();//fecha a conexão com o DB
                 }
