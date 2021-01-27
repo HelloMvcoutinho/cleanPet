@@ -46,7 +46,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenAju = new javax.swing.JMenu();
         MenAjuSob = new javax.swing.JMenuItem();
         MenuApc = new javax.swing.JMenu();
-        MenuApcSai = new javax.swing.JMenuItem();
+        MenuOpcSai = new javax.swing.JMenuItem();
+        MenuOpcTro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agendamento de banho e tosa");
@@ -127,14 +128,23 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         MenuApc.setText("Opções");
 
-        MenuApcSai.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
-        MenuApcSai.setText("Sair");
-        MenuApcSai.addActionListener(new java.awt.event.ActionListener() {
+        MenuOpcSai.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
+        MenuOpcSai.setText("Sair");
+        MenuOpcSai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuApcSaiActionPerformed(evt);
+                MenuOpcSaiActionPerformed(evt);
             }
         });
-        MenuApc.add(MenuApcSai);
+        MenuApc.add(MenuOpcSai);
+
+        MenuOpcTro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
+        MenuOpcTro.setText("Trocar Usuário");
+        MenuOpcTro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuOpcTroActionPerformed(evt);
+            }
+        });
+        MenuApc.add(MenuOpcTro);
 
         Menu.add(MenuApc);
 
@@ -187,13 +197,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblData.setText(formatador.format(data));
     }//GEN-LAST:event_formWindowActivated
 
-    private void MenuApcSaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuApcSaiActionPerformed
+    private void MenuOpcSaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuOpcSaiActionPerformed
         //exibe uma caixa de diálogo para sair do sistema
         int sair = JOptionPane.showConfirmDialog(null,"Tem certe que deseja sair?","Atenção",JOptionPane.YES_NO_OPTION);
         if (sair == JOptionPane.YES_OPTION){
             System.exit(0);
         }
-    }//GEN-LAST:event_MenuApcSaiActionPerformed
+    }//GEN-LAST:event_MenuOpcSaiActionPerformed
 
     private void MenAjuSobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenAjuSobActionPerformed
         //exibi a tela sobre
@@ -207,6 +217,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
         usuario.setVisible(true);
         Desktop.add(usuario);
     }//GEN-LAST:event_MenCadUsuActionPerformed
+
+    private void MenuOpcTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuOpcTroActionPerformed
+        // Vai trocar de usuário chamando a tela login
+        int sair = JOptionPane.showConfirmDialog(null,"Tem certe que deseja trocar de usuário?","Atenção",JOptionPane.YES_NO_OPTION);
+        if (sair == JOptionPane.YES_OPTION){
+            TelaLogin troca = new TelaLogin();
+            troca.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_MenuOpcTroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,7 +276,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenRelSer;
     private javax.swing.JMenuBar Menu;
     private javax.swing.JMenu MenuApc;
-    private javax.swing.JMenuItem MenuApcSai;
+    private javax.swing.JMenuItem MenuOpcSai;
+    private javax.swing.JMenuItem MenuOpcTro;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblData;
     public static javax.swing.JLabel lblUsuario;

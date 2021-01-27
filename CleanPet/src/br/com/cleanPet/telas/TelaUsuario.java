@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 package br.com.cleanPet.telas;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+//import java.sql.Connection;
+//import java.sql.PreparedStatement;
+//import java.sql.ResultSet;
 import br.com.cleanPet.dal.Conexao;
 import javax.swing.JOptionPane;
 
@@ -32,6 +32,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         initComponents();
         conexao = Conexao.conector();
     }
+    //método para consultar usuários
     private void consultar(){
         String sql = "select * from tb_usuarios where iduser=?";
         try {
@@ -58,7 +59,28 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
+    //método para adicionar usuários
+    private void adicionar(){
+        String sql = "insert into tb_usuarios(usuario,login,senha,perfil) values(?,?,?,?)";
+        try {
+            pst = conexao.prepareStatement(sql);
+            //pst.setString(1,txtUsuId.getText());
+            pst.setString(1,txtUsuNome.getText());
+            pst.setString(2,txtUsuLogin.getText());
+            pst.setString(3,txtUsuSenha.getText());
+            pst.setString(4,cboUsuPerfil.getSelectedItem().toString());
+            //Faz a atualização na tabela com os valores do formularios
+            //Faz a confirmação da alteração no DB
+            int adicionado = pst.executeUpdate();
+            if(adicionado > 0){
+                JOptionPane.showMessageDialog(null,"Usuário adicionado com sucesso!");
+            }
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -105,6 +127,11 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         btnUsuCreate.setToolTipText("Adicionar");
         btnUsuCreate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUsuCreate.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnUsuCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuCreateActionPerformed(evt);
+            }
+        });
 
         btnUsuRead.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/read.png"))); // NOI18N
         btnUsuRead.setToolTipText("Consultar");
@@ -207,9 +234,14 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUsuReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuReadActionPerformed
-        // chama o método consultar
+        // chamando o método consultar
         consultar();
     }//GEN-LAST:event_btnUsuReadActionPerformed
+
+    private void btnUsuCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuCreateActionPerformed
+        // chamando o método adicionar
+        adicionar();
+    }//GEN-LAST:event_btnUsuCreateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
