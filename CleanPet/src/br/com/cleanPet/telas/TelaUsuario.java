@@ -39,13 +39,20 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
             pst.setString(1,txtUsuId.getText());
             rs = pst.executeQuery();
             if (rs.next()){
+                //busca informação no DB
                 txtUsuNome.setText(rs.getString(2));
                 txtUsuLogin.setText(rs.getString(3));
                 txtUsuSenha.setText(rs.getString(4));
-                //altera o combobox
+                //busca informação no DB
                 cboUsuPerfil.setSelectedItem(rs.getString(5));
                 
             } else {
+                JOptionPane.showMessageDialog(null, "Ususário não cadastrado!");
+                //limpa os campos
+                txtUsuNome.setText(null);
+                txtUsuLogin.setText(null);
+                txtUsuSenha.setText(null);
+                cboUsuPerfil.setSelectedItem(null);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
