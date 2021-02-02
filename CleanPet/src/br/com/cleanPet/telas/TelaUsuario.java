@@ -121,7 +121,29 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-
+    //método para excluir usuário
+    private void remover(){
+        //faz confirmação a remoção
+        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o usuário?","Atenção",JOptionPane.YES_OPTION);
+        if (confirma == JOptionPane.YES_OPTION){
+            String sql = "delete from tb_usuarios where iduser=?";
+            try {
+                pst =conexao.prepareStatement(sql);
+                pst.setString(1,txtUsuId.getText());
+                 int apagado = pst.executeUpdate();
+                 if(apagado >0){
+                     JOptionPane.showMessageDialog(null, "Usuário removido com sucesso!");
+                     //limpa os campos
+                    txtUsuId.setText(null);
+                    txtUsuNome.setText(null);
+                    txtUsuLogin.setText(null);
+                    txtUsuSenha.setText(null);
+                 }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -199,6 +221,11 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         btnUsuDelete.setToolTipText("Excluir");
         btnUsuDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUsuDelete.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnUsuDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuDeleteActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("* Campos obrigatorios ");
 
@@ -303,6 +330,11 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         // chamando o método alterar
         alterar();
     }//GEN-LAST:event_btnUsuUpdateActionPerformed
+
+    private void btnUsuDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuDeleteActionPerformed
+        // chamando o método remover
+        remover();
+    }//GEN-LAST:event_btnUsuDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
