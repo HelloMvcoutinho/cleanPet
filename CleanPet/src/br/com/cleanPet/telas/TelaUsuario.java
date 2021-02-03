@@ -185,6 +185,12 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
 
         jLabel5.setText("*Perfil");
 
+        txtUsuId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsuIdActionPerformed(evt);
+            }
+        });
+
         cboUsuPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "user", "admin" }));
 
         btnUsuCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/create.png"))); // NOI18N
@@ -218,7 +224,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         });
 
         btnUsuDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/delete.png"))); // NOI18N
-        btnUsuDelete.setToolTipText("Excluir");
+        btnUsuDelete.setToolTipText("Remover");
         btnUsuDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUsuDelete.setPreferredSize(new java.awt.Dimension(80, 80));
         btnUsuDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -227,7 +233,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setText("* Campos obrigatorios ");
+        jLabel6.setText("* Campos obrigatórios ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -335,6 +341,10 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         // chamando o método remover
         remover();
     }//GEN-LAST:event_btnUsuDeleteActionPerformed
+
+    private void txtUsuIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsuIdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

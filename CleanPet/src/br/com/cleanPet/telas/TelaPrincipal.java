@@ -83,6 +83,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         MenCadCli.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         MenCadCli.setText("Cliente");
+        MenCadCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenCadCliActionPerformed(evt);
+            }
+        });
         MenCad.add(MenCadCli);
 
         MenCadOrd.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.ALT_MASK));
@@ -212,7 +217,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenAjuSobActionPerformed
 
     private void MenCadUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadUsuActionPerformed
-        // Vai abrir o form TelaUsuario dentro do desktop pane
+        //Vai abrir o form TelaUsuario dentro do desktop pane
         TelaUsuario usuario = new TelaUsuario();
         usuario.setVisible(true);
         Desktop.add(usuario);
@@ -227,6 +232,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_MenuOpcTroActionPerformed
+
+    private void MenCadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadCliActionPerformed
+        // Vai abrir o form TelaCliente dentro do desktop pane
+        TelaCliente cliente = new TelaCliente();
+        cliente.setVisible(true);
+        Desktop.add(cliente);
+        
+    }//GEN-LAST:event_MenCadCliActionPerformed
 
     /**
      * @param args the command line arguments
