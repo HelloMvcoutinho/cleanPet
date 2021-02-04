@@ -40,6 +40,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenCadCli = new javax.swing.JMenuItem();
         MenCadOrd = new javax.swing.JMenuItem();
         MenCadUsu = new javax.swing.JMenuItem();
+        MenCadCid = new javax.swing.JMenuItem();
+        MenCidBar = new javax.swing.JMenuItem();
         MenRel = new javax.swing.JMenu();
         MenRelSer = new javax.swing.JMenuItem();
         MenAge = new javax.swing.JMenu();
@@ -103,6 +105,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         MenCad.add(MenCadUsu);
+
+        MenCadCid.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.ALT_MASK));
+        MenCadCid.setText("Cidade");
+        MenCadCid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenCadCidActionPerformed(evt);
+            }
+        });
+        MenCad.add(MenCadCid);
+
+        MenCidBar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK));
+        MenCidBar.setText("Bairro");
+        MenCad.add(MenCidBar);
 
         Menu.add(MenCad);
 
@@ -241,6 +256,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_MenCadCliActionPerformed
 
+    private void MenCadCidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadCidActionPerformed
+        //// Vai abrir o form TelaCliente dentro do desktop pane
+        TelaCidade cidade = new TelaCidade();
+        cidade.setVisible(true);
+        Desktop.add(cidade);
+    }//GEN-LAST:event_MenCadCidActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -282,9 +304,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu MenAju;
     private javax.swing.JMenuItem MenAjuSob;
     private javax.swing.JMenu MenCad;
+    private javax.swing.JMenuItem MenCadCid;
     private javax.swing.JMenuItem MenCadCli;
     private javax.swing.JMenuItem MenCadOrd;
     public static javax.swing.JMenuItem MenCadUsu;
+    private javax.swing.JMenuItem MenCidBar;
     public static javax.swing.JMenu MenRel;
     private javax.swing.JMenuItem MenRelSer;
     private javax.swing.JMenuBar Menu;

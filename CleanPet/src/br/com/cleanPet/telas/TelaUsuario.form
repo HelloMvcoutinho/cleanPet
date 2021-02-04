@@ -129,14 +129,14 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+              <EmptySpace pref="97" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
                   <Component id="btnUsuUpdate" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="btnUsuDelete" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="btnUsuCreate" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="btnUsuRead" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

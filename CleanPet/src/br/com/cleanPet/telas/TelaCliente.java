@@ -65,7 +65,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    //método para alterar os dados do usuário
+    /*//método para alterar os dados do usuário
     private void alterar(){
         String sql="update tb_usuarios set usuario=?,login=?,senha=?,perfil=? where iduser=? ";
         try {
@@ -94,7 +94,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-    }
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -164,7 +164,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tblClientes);
 
         btnCliCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/create.png"))); // NOI18N
-        btnCliCreate.setToolTipText("Adcionar");
+        btnCliCreate.setToolTipText("Adicionar");
         btnCliCreate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnCliUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/update.png"))); // NOI18N
@@ -265,15 +265,15 @@ public class TelaCliente extends javax.swing.JInternalFrame {
                         .addComponent(txtCliBairro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel6))
                     .addComponent(txtCliCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCliUpdate)
                     .addComponent(btnCliCreate)
                     .addComponent(btnCliDelete))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        setBounds(0, 0, 725, 450);
+        setBounds(0, 0, 725, 458);
     }// </editor-fold>//GEN-END:initComponents
 
 
