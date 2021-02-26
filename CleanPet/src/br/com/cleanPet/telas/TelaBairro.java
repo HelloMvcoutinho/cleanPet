@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author MarcioC
  */
-public class TelaCidade extends javax.swing.JInternalFrame {
+public class TelaBairro extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form TelaCidade
@@ -25,26 +25,26 @@ public class TelaCidade extends javax.swing.JInternalFrame {
     PreparedStatement pst = null;
     ResultSet rs = null;
     
-    public TelaCidade() {
+    public TelaBairro() {
         initComponents();
         conexao = Conexao.conector();
     }
     //método para consultar cidade
     private void consultar() {
-        String sql = "select * from tb_cidade where codigocid=?";
+        String sql = "select * from tb_bairro where codigocid=?";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, txtCidCod.getText());
+            pst.setString(1, txtBaiCod.getText());
             rs = pst.executeQuery();
             if (rs.next()) {
                 //busca informação no DB
-                txtCidNom.setText(rs.getString(3));
+                txtBaiNom.setText(rs.getString(3));
                 txtCidUf.setText(rs.getString(4));
                 
             } else {
                 JOptionPane.showMessageDialog(null, "Cidade não cadastrado!");
                 //limpa os campos
-                txtCidNom.setText(null);
+                txtBaiNom.setText(null);
                 txtCidUf.setText(null);
                
             }
@@ -57,12 +57,12 @@ public class TelaCidade extends javax.swing.JInternalFrame {
         String sql = "insert into tb_cidade(codigocid,nomecid,ufcid) values(?,?,?)";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, txtCidCod.getText());
-            pst.setString(2, txtCidNom.getText());
+            pst.setString(1, txtBaiCod.getText());
+            pst.setString(2, txtBaiNom.getText());
             pst.setString(3, txtCidUf.getText());
             
 
-            if (txtCidCod.getText().isEmpty()||(txtCidNom.getText().isEmpty())||(txtCidUf.getText().isEmpty())){
+            if (txtBaiCod.getText().isEmpty()||(txtBaiNom.getText().isEmpty())||(txtCidUf.getText().isEmpty())){
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");
             } else {
                 //Faz a atualização na tabela com os valores do formularios
@@ -71,8 +71,8 @@ public class TelaCidade extends javax.swing.JInternalFrame {
                 if (adicionado > 0) {
                     JOptionPane.showMessageDialog(null, "Cidade adicionado com sucesso!");
                     //limpa os campos
-                    txtCidCod.setText(null);
-                    txtCidNom.setText(null);
+                    txtBaiCod.setText(null);
+                    txtBaiNom.setText(null);
                     txtCidUf.setText(null);
                 }
             }
@@ -85,12 +85,12 @@ public class TelaCidade extends javax.swing.JInternalFrame {
         String sql="update tb_cidade set codigocid=?,nomecid=?,ufcid=? where codigocid=? ";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, txtCidCod.getText());
-            pst.setString(2, txtCidNom.getText());
+            pst.setString(1, txtBaiCod.getText());
+            pst.setString(2, txtBaiNom.getText());
             pst.setString(3, txtCidUf.getText());
-            pst.setString(4, txtCidCod.getText());
+            pst.setString(4, txtBaiCod.getText());
             
-            if (txtCidCod.getText().isEmpty()||(txtCidNom.getText().isEmpty())||(txtCidUf.getText().isEmpty())){
+            if (txtBaiCod.getText().isEmpty()||(txtBaiNom.getText().isEmpty())||(txtCidUf.getText().isEmpty())){
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");
             } else {
                 //Faz a atualização na tabela com os valores do formularios
@@ -99,8 +99,8 @@ public class TelaCidade extends javax.swing.JInternalFrame {
                 if (adicionado > 0) {
                     JOptionPane.showMessageDialog(null, "Dados da cidade alterados com sucesso!");
                     //limpa os campos
-                    txtCidCod.setText(null);
-                    txtCidNom.setText(null);
+                    txtBaiCod.setText(null);
+                    txtBaiNom.setText(null);
                     txtCidUf.setText(null);
                 }
             }
@@ -120,14 +120,14 @@ public class TelaCidade extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtCidNom = new javax.swing.JTextField();
+        txtBaiNom = new javax.swing.JTextField();
         txtCidUf = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtCidCod = new javax.swing.JTextField();
-        btnCidCreate = new javax.swing.JButton();
-        btnCidRead = new javax.swing.JButton();
-        btnCidUpdate = new javax.swing.JButton();
-        btnCidDelete = new javax.swing.JButton();
+        txtBaiCod = new javax.swing.JTextField();
+        btnBaiCreate = new javax.swing.JButton();
+        btnBaiRead = new javax.swing.JButton();
+        btnBaiUpdate = new javax.swing.JButton();
+        btnBaiDelete = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -137,44 +137,44 @@ public class TelaCidade extends javax.swing.JInternalFrame {
         setToolTipText("");
         setPreferredSize(new java.awt.Dimension(725, 450));
 
-        jLabel1.setText("*Cidade");
+        jLabel1.setText("*Bairro");
 
-        jLabel2.setText("*UF");
+        jLabel2.setText("*Cidade");
 
         jLabel3.setText("*Campo obrigatórios");
 
         jLabel4.setText("*Codigo");
 
-        btnCidCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/create.png"))); // NOI18N
-        btnCidCreate.setToolTipText("Adicinoar");
-        btnCidCreate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCidCreate.addActionListener(new java.awt.event.ActionListener() {
+        btnBaiCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/create.png"))); // NOI18N
+        btnBaiCreate.setToolTipText("Adicinoar");
+        btnBaiCreate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBaiCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCidCreateActionPerformed(evt);
+                btnBaiCreateActionPerformed(evt);
             }
         });
 
-        btnCidRead.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/read.png"))); // NOI18N
-        btnCidRead.setToolTipText("Consultar");
-        btnCidRead.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCidRead.addActionListener(new java.awt.event.ActionListener() {
+        btnBaiRead.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/read.png"))); // NOI18N
+        btnBaiRead.setToolTipText("Consultar");
+        btnBaiRead.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBaiRead.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCidReadActionPerformed(evt);
+                btnBaiReadActionPerformed(evt);
             }
         });
 
-        btnCidUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/update.png"))); // NOI18N
-        btnCidUpdate.setToolTipText("Alterar");
-        btnCidUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCidUpdate.addActionListener(new java.awt.event.ActionListener() {
+        btnBaiUpdate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/update.png"))); // NOI18N
+        btnBaiUpdate.setToolTipText("Alterar");
+        btnBaiUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBaiUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCidUpdateActionPerformed(evt);
+                btnBaiUpdateActionPerformed(evt);
             }
         });
 
-        btnCidDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/delete.png"))); // NOI18N
-        btnCidDelete.setToolTipText("Remover");
-        btnCidDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBaiDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/delete.png"))); // NOI18N
+        btnBaiDelete.setToolTipText("Remover");
+        btnBaiDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,13 +188,13 @@ public class TelaCidade extends javax.swing.JInternalFrame {
                 .addContainerGap(76, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCidCreate)
+                        .addComponent(btnBaiCreate)
                         .addGap(57, 57, 57)
-                        .addComponent(btnCidRead)
+                        .addComponent(btnBaiRead)
                         .addGap(57, 57, 57)
-                        .addComponent(btnCidUpdate)
+                        .addComponent(btnBaiUpdate)
                         .addGap(57, 57, 57)
-                        .addComponent(btnCidDelete))
+                        .addComponent(btnBaiDelete))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel4)
@@ -202,12 +202,12 @@ public class TelaCidade extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCidNom, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtBaiNom, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(63, 63, 63)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtCidUf, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtCidCod, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtBaiCod, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -218,52 +218,52 @@ public class TelaCidade extends javax.swing.JInternalFrame {
                 .addGap(112, 112, 112)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtCidCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBaiCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtCidNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBaiNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(txtCidUf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnCidCreate)
-                    .addComponent(btnCidRead)
-                    .addComponent(btnCidUpdate)
-                    .addComponent(btnCidDelete))
+                    .addComponent(btnBaiCreate)
+                    .addComponent(btnBaiRead)
+                    .addComponent(btnBaiUpdate)
+                    .addComponent(btnBaiDelete))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 725, 450);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCidReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCidReadActionPerformed
+    private void btnBaiReadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaiReadActionPerformed
         // chamando o método consultar
         consultar();
-    }//GEN-LAST:event_btnCidReadActionPerformed
+    }//GEN-LAST:event_btnBaiReadActionPerformed
 
-    private void btnCidUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCidUpdateActionPerformed
+    private void btnBaiUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaiUpdateActionPerformed
         // chamando o métoto alterar
         alterar();
-    }//GEN-LAST:event_btnCidUpdateActionPerformed
+    }//GEN-LAST:event_btnBaiUpdateActionPerformed
 
-    private void btnCidCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCidCreateActionPerformed
+    private void btnBaiCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaiCreateActionPerformed
         // chamando o método adicionar
         adicionar();
-    }//GEN-LAST:event_btnCidCreateActionPerformed
+    }//GEN-LAST:event_btnBaiCreateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCidCreate;
-    private javax.swing.JButton btnCidDelete;
-    private javax.swing.JButton btnCidRead;
-    private javax.swing.JButton btnCidUpdate;
+    private javax.swing.JButton btnBaiCreate;
+    private javax.swing.JButton btnBaiDelete;
+    private javax.swing.JButton btnBaiRead;
+    private javax.swing.JButton btnBaiUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtCidCod;
-    private javax.swing.JTextField txtCidNom;
+    private javax.swing.JTextField txtBaiCod;
+    private javax.swing.JTextField txtBaiNom;
     private javax.swing.JTextField txtCidUf;
     // End of variables declaration//GEN-END:variables
 }

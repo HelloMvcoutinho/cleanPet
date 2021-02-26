@@ -43,13 +43,13 @@
               <EmptySpace pref="76" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="btnCidCreate" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBaiCreate" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                      <Component id="btnCidRead" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBaiRead" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                      <Component id="btnCidUpdate" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBaiUpdate" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                      <Component id="btnCidDelete" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBaiDelete" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -59,13 +59,13 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="txtCidNom" min="-2" pref="148" max="-2" attributes="0"/>
+                              <Component id="txtBaiNom" min="-2" pref="148" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="txtCidUf" min="-2" pref="54" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="txtCidCod" min="-2" pref="88" max="-2" attributes="0"/>
+                          <Component id="txtBaiCod" min="-2" pref="88" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -81,21 +81,21 @@
               <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtCidCod" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtBaiCod" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtCidNom" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtBaiNom" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtCidUf" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="89" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
-                  <Component id="btnCidCreate" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCidRead" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCidUpdate" alignment="2" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnCidDelete" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnBaiCreate" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnBaiRead" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnBaiUpdate" alignment="2" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnBaiDelete" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="60" max="32767" attributes="0"/>
           </Group>
@@ -105,12 +105,12 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="*Cidade"/>
+        <Property name="text" type="java.lang.String" value="*Bairro"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="*UF"/>
+        <Property name="text" type="java.lang.String" value="*Cidade"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
@@ -118,7 +118,7 @@
         <Property name="text" type="java.lang.String" value="*Campo obrigat&#xf3;rios"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCidNom">
+    <Component class="javax.swing.JTextField" name="txtBaiNom">
     </Component>
     <Component class="javax.swing.JTextField" name="txtCidUf">
     </Component>
@@ -127,9 +127,9 @@
         <Property name="text" type="java.lang.String" value="*Codigo"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCidCod">
+    <Component class="javax.swing.JTextField" name="txtBaiCod">
     </Component>
-    <Component class="javax.swing.JButton" name="btnCidCreate">
+    <Component class="javax.swing.JButton" name="btnBaiCreate">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/br/com/cleanPet/icones/create.png"/>
@@ -140,10 +140,10 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCidCreateActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBaiCreateActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnCidRead">
+    <Component class="javax.swing.JButton" name="btnBaiRead">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/br/com/cleanPet/icones/read.png"/>
@@ -154,10 +154,10 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCidReadActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBaiReadActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnCidUpdate">
+    <Component class="javax.swing.JButton" name="btnBaiUpdate">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/br/com/cleanPet/icones/update.png"/>
@@ -168,10 +168,10 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCidUpdateActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBaiUpdateActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnCidDelete">
+    <Component class="javax.swing.JButton" name="btnBaiDelete">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/br/com/cleanPet/icones/delete.png"/>
