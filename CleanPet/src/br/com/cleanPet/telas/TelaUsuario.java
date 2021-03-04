@@ -41,7 +41,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtUsuId.getText());
             rs = pst.executeQuery();
-            if (rs.next()) {
+            if (rs.next()){
                 //busca informação no DB
                 txtUsuNome.setText(rs.getString(2));
                 txtUsuLogin.setText(rs.getString(3));
@@ -59,6 +59,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+        
     }
 
     //método para adicionar usuários
@@ -184,12 +185,6 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         jLabel4.setText("*Senha");
 
         jLabel5.setText("*Perfil");
-
-        txtUsuId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsuIdActionPerformed(evt);
-            }
-        });
 
         cboUsuPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "user", "admin" }));
 
@@ -341,10 +336,6 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         // chamando o método remover
         remover();
     }//GEN-LAST:event_btnUsuDeleteActionPerformed
-
-    private void txtUsuIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsuIdActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -117,6 +117,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         MenCidBar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK));
         MenCidBar.setText("Bairro");
+        MenCidBar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenCidBarActionPerformed(evt);
+            }
+        });
         MenCad.add(MenCidBar);
 
         Menu.add(MenCad);
@@ -262,6 +267,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cidade.setVisible(true);
         Desktop.add(cidade);
     }//GEN-LAST:event_MenCadCidActionPerformed
+
+    private void MenCidBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCidBarActionPerformed
+        // TODO add your handling code here:
+        TelaBairro bairro = new TelaBairro();
+        bairro.setVisible(true);
+        Desktop.add(bairro);
+    }//GEN-LAST:event_MenCidBarActionPerformed
 
     /**
      * @param args the command line arguments

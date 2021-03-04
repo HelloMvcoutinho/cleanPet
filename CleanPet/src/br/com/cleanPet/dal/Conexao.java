@@ -7,6 +7,7 @@ package br.com.cleanPet.dal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,7 +43,7 @@ public class Conexao {
         return true;
     }*/
     public static Connection conector() {
-        java.sql.Connection conexao = null;
+        Connection conexao = null;
         //Chama o driver que foi importado para biblioteca
         String driver = "org.sqlite.JDBC";
         String url = "jdbc:sqlite:db/db_cleanPet.db";
@@ -56,6 +57,18 @@ public class Conexao {
             //System.err.println( e.getClass().getName() + ": " + e.getMessage() );
             //System.out.println(e);
             return null;
+        }
+    }
+    public static void closeConector(Connection con) {
+        if(con != null){
+        try {
+            con.close();
+            
+        /** Retorna um erro caso nao consiga desconectar */    
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao desconectar o banco"+e);
+           
+        }
         }
     }
     
