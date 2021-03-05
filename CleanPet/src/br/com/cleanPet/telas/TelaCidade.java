@@ -8,6 +8,7 @@ package br.com.cleanPet.telas;
 import java.sql.*;
 import br.com.cleanPet.dal.Conexao;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author MarcioC
@@ -17,18 +18,19 @@ public class TelaCidade extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaCidade
      */
-        //usando a variavel conexao do DAL
+    //usando a variavel conexao do DAL
     Connection conexao = null;
     //criando variáveis especiais para conexão com o banco
     //Prepared Statement e ResultSet são frameworks do pacote java.sql
     //e server para preparar e executar as instruções SQL
     PreparedStatement pst = null;
     ResultSet rs = null;
-    
+
     public TelaCidade() {
         initComponents();
         conexao = Conexao.conector();
     }
+
     //método para consultar cidade
     private void consultar() {
         String sql = "select * from tb_cidade where codigocid=?";
@@ -40,18 +42,19 @@ public class TelaCidade extends javax.swing.JInternalFrame {
                 //busca informação no DB
                 txtCidNom.setText(rs.getString(3));
                 txtCidUf.setText(rs.getString(4));
-                
+
             } else {
                 JOptionPane.showMessageDialog(null, "Cidade não cadastrado!");
                 //limpa os campos
                 txtCidNom.setText(null);
                 txtCidUf.setText(null);
-               
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+
     //método para adicionar usuários
     private void adicionar() {
         String sql = "insert into tb_cidade(codigocid,nomecid,ufcid) values(?,?,?)";
@@ -60,9 +63,8 @@ public class TelaCidade extends javax.swing.JInternalFrame {
             pst.setString(1, txtCidCod.getText());
             pst.setString(2, txtCidNom.getText());
             pst.setString(3, txtCidUf.getText());
-            
 
-            if (txtCidCod.getText().isEmpty()||(txtCidNom.getText().isEmpty())||(txtCidUf.getText().isEmpty())){
+            if (txtCidCod.getText().isEmpty() || (txtCidNom.getText().isEmpty()) || (txtCidUf.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");
             } else {
                 //Faz a atualização na tabela com os valores do formularios
@@ -80,17 +82,18 @@ public class TelaCidade extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+
     //método para alterar os dados do usuário
-    private void alterar(){
-        String sql="update tb_cidade set codigocid=?,nomecid=?,ufcid=? where codigocid=? ";
+    private void alterar() {
+        String sql = "update tb_cidade set codigocid=?,nomecid=?,ufcid=? where codigocid=? ";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtCidCod.getText());
             pst.setString(2, txtCidNom.getText());
             pst.setString(3, txtCidUf.getText());
             pst.setString(4, txtCidCod.getText());
-            
-            if (txtCidCod.getText().isEmpty()||(txtCidNom.getText().isEmpty())||(txtCidUf.getText().isEmpty())){
+
+            if (txtCidCod.getText().isEmpty() || (txtCidNom.getText().isEmpty()) || (txtCidUf.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");
             } else {
                 //Faz a atualização na tabela com os valores do formularios
@@ -108,6 +111,7 @@ public class TelaCidade extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -41,7 +41,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtUsuId.getText());
             rs = pst.executeQuery();
-            if (rs.next()){
+            if (rs.next()) {
                 //busca informação no DB
                 txtUsuNome.setText(rs.getString(2));
                 txtUsuLogin.setText(rs.getString(3));
@@ -59,7 +59,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        
+
     }
 
     //método para adicionar usuários
@@ -73,7 +73,7 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
             pst.setString(3, txtUsuSenha.getText());
             pst.setString(4, cboUsuPerfil.getSelectedItem().toString());
 
-            if (txtUsuNome.getText().isEmpty()||(txtUsuLogin.getText().isEmpty())||(txtUsuSenha.getText().isEmpty())){
+            if (txtUsuNome.getText().isEmpty() || (txtUsuLogin.getText().isEmpty()) || (txtUsuSenha.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");
             } else {
                 //Faz a atualização na tabela com os valores do formularios
@@ -92,9 +92,10 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+
     //método para alterar os dados do usuário
-    private void alterar(){
-        String sql="update tb_usuarios set usuario=?,login=?,senha=?,perfil=? where iduser=? ";
+    private void alterar() {
+        String sql = "update tb_usuarios set usuario=?,login=?,senha=?,perfil=? where iduser=? ";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtUsuNome.getText());
@@ -102,8 +103,8 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
             pst.setString(3, txtUsuSenha.getText());
             pst.setString(4, cboUsuPerfil.getSelectedItem().toString());
             pst.setString(5, txtUsuId.getText());
-            
-            if (txtUsuNome.getText().isEmpty()||(txtUsuLogin.getText().isEmpty())||(txtUsuSenha.getText().isEmpty())){
+
+            if (txtUsuNome.getText().isEmpty() || (txtUsuLogin.getText().isEmpty()) || (txtUsuSenha.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");
             } else {
                 //Faz a atualização na tabela com os valores do formularios
@@ -122,29 +123,31 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+
     //método para excluir usuário
-    private void remover(){
+    private void remover() {
         //faz confirmação a remoção
-        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o usuário?","Atenção",JOptionPane.YES_OPTION);
-        if (confirma == JOptionPane.YES_OPTION){
+        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o usuário?", "Atenção", JOptionPane.YES_OPTION);
+        if (confirma == JOptionPane.YES_OPTION) {
             String sql = "delete from tb_usuarios where iduser=?";
             try {
-                pst =conexao.prepareStatement(sql);
-                pst.setString(1,txtUsuId.getText());
-                 int apagado = pst.executeUpdate();
-                 if(apagado >0){
-                     JOptionPane.showMessageDialog(null, "Usuário removido com sucesso!");
-                     //limpa os campos
+                pst = conexao.prepareStatement(sql);
+                pst.setString(1, txtUsuId.getText());
+                int apagado = pst.executeUpdate();
+                if (apagado > 0) {
+                    JOptionPane.showMessageDialog(null, "Usuário removido com sucesso!");
+                    //limpa os campos
                     txtUsuId.setText(null);
                     txtUsuNome.setText(null);
                     txtUsuLogin.setText(null);
                     txtUsuSenha.setText(null);
-                 }
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
