@@ -89,14 +89,13 @@ public class TelaBairro extends javax.swing.JInternalFrame {
         }
     }
 
-    //método para alterar os dados do usuário
+    //método para alterar os dados da cidade
     private void alterar() {
         String sql = "update tb_cidade set codigocid=?,nomecid=?,ufcid=? where codigocid=? ";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtBaiCod.getText());
             pst.setString(2, txtBaiNom.getText());
-
             pst.setString(4, txtBaiCod.getText());
 
             if (txtBaiCod.getText().isEmpty() || (txtBaiNom.getText().isEmpty())) {

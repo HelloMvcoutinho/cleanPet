@@ -55,7 +55,7 @@ public class TelaCidade extends javax.swing.JInternalFrame {
         }
     }
 
-    //método para adicionar usuários
+    //método para adicionar cidade
     private void adicionar() {
         String sql = "insert into tb_cidade(codigocid,nomecid,ufcid) values(?,?,?)";
         try {
@@ -83,7 +83,7 @@ public class TelaCidade extends javax.swing.JInternalFrame {
         }
     }
 
-    //método para alterar os dados do usuário
+    //método para alterar os dados da cidade
     private void alterar() {
         String sql = "update tb_cidade set codigocid=?,nomecid=?,ufcid=? where codigocid=? ";
         try {
@@ -109,6 +109,29 @@ public class TelaCidade extends javax.swing.JInternalFrame {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    //método para excluir cidade
+    private void remover() {
+        //faz confirmação a remoção
+        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir a cidade?", "Atenção", JOptionPane.YES_OPTION);
+        if (confirma == JOptionPane.YES_OPTION) {
+            String sql = "delete from tb_didade where codigocid=?";
+            try {
+                pst = conexao.prepareStatement(sql);
+                pst.setString(1, txtCidCod.getText());
+                int apagado = pst.executeUpdate();
+                if (apagado > 0) {
+                    JOptionPane.showMessageDialog(null, "Usuário removido com sucesso!");
+                    //limpa os campos
+                    txtCidCod.setText(null);
+                    txtCidNom.setText(null);
+                    txtCidUf.setText(null);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
         }
     }
 
