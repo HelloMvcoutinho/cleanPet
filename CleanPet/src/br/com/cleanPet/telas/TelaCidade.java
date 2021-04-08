@@ -33,6 +33,7 @@ public class TelaCidade extends javax.swing.JInternalFrame {
 
     //método para consultar cidade
     private void consultar() {
+        //select * from tb_cidade where codigocid ='5' or nomecid LIKE '?%' 
         String sql = "select * from tb_cidade where codigocid=?";
         try {
             pst = conexao.prepareStatement(sql);
@@ -117,7 +118,7 @@ public class TelaCidade extends javax.swing.JInternalFrame {
         //faz confirmação a remoção
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir a cidade?", "Atenção", JOptionPane.YES_OPTION);
         if (confirma == JOptionPane.YES_OPTION) {
-            String sql = "delete from tb_didade where codigocid=?";
+            String sql = "delete from tb_cidade where codigocid=?";
             try {
                 pst = conexao.prepareStatement(sql);
                 pst.setString(1, txtCidCod.getText());
@@ -202,6 +203,11 @@ public class TelaCidade extends javax.swing.JInternalFrame {
         btnCidDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/delete.png"))); // NOI18N
         btnCidDelete.setToolTipText("Remover");
         btnCidDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCidDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCidDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -278,6 +284,11 @@ public class TelaCidade extends javax.swing.JInternalFrame {
         // chamando o método adicionar
         adicionar();
     }//GEN-LAST:event_btnCidCreateActionPerformed
+
+    private void btnCidDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCidDeleteActionPerformed
+        // chamando o método remover
+        remover();
+    }//GEN-LAST:event_btnCidDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
