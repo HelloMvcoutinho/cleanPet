@@ -35,24 +35,23 @@ public class TelaBairro extends javax.swing.JInternalFrame {
     //método para consultar bairro
     private void consultar() {
         /*"select * from tb_bairro where codigobar=?";*/
-        String sql = "select tb_bairro.codigobar,tb_bairro.nomebar,tb_cidade.nomecid from tb_bairro left join tb_cidade on tb_bairro.idcidade = tb_cidade.idcid where codigobar =?";
+        String sql = "select tb_bairro.idbar,tb_bairro.codigobar,tb_bairro.nomebar,tb_cidade.nomecid from tb_bairro left join tb_cidade on tb_bairro.idcidade = tb_cidade.idcid where codigobar =?";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtBaiCod.getText());
             rs = pst.executeQuery();
             if (rs.next()) {
                 //busca informação no DB
-                txtBaiNom.setText(rs.getString(2));
-                cboBaiCid.removeAllItems();
-                cboBaiCid.addItem(rs.getString(3));
+                txtBaiNom.setText(rs.getString(3));
+                cboBaiCid.setSelectedItem(rs.getString(4));
+                //cboBaiCid.removeAllItems();
+                //cboBaiCid.addItem(rs.getString(3));
 
             } else {
                 txtBaiNom.setText(null);
                 preencheBairro();
                 JOptionPane.showMessageDialog(null, "Bairro não cadastrado!");
                 //limpa os campos
-                
-
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -62,14 +61,21 @@ public class TelaBairro extends javax.swing.JInternalFrame {
 
     }
 
-    //método para adicionar usuários
+    //método para adicionar bairro
     private void adicionar() {
-        String sql = "insert into tb_cidade(codigocid,nomecid,ufcid) values(?,?,?)";
+        String sql = "insert into tb_bairro (codigobar,nomebar,idcidade) values(?,?,?)";
+        
         try {
+             
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtBaiCod.getText());
             pst.setString(2, txtBaiNom.getText());
+            pst.setInt(3, (int) cboBaiCid.getSelectedItem());
+            //pst.setString(4, cboUsuPerfil.getSelectedItem().toString());
 
+            //int idmaria = int.parse(cbfrabicante.SelectedValue.ToString());
+            //pst.setString(3, int.parse(cboBaiCid.Sele);
+            //pst.setString(3, cboBaiCid.);
             if (txtBaiCod.getText().isEmpty() || (txtBaiNom.getText().isEmpty())) {
                 JOptionPane.showMessageDialog(null, "Preencha todos os campos obrigatórios!");
             } else {
@@ -118,15 +124,35 @@ public class TelaBairro extends javax.swing.JInternalFrame {
     }
 
     private void preencheBairro() {
+        //String sql = "select * from tb_cidade order by nomecid";
         String sql = "select * from tb_cidade order by nomecid";
         try {
             pst = conexao.prepareStatement(sql);
             rs = pst.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 cboBaiCid.removeAllItems();
-                while (rs.next()) {                    
+                do {
                     cboBaiCid.addItem(rs.getString(3));
-                }
+                } while (rs.next());
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    private void comboId() {
+        try {
+            String sql = "SELECT iduser FROM tbusuarios WHERE usuario='" + cboBaiCid.getSelectedItem().toString() + "'";
+            pst = conexao.prepareStatement(sql);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+
+                int iduser = rs.getInt("iduser");
+                //String usuario = rs.getString("usuario");
+
+                // cbxusuarios.addItem(usuario);
+                //txtid.setText(rs.getString("iduser"));
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

@@ -45,6 +45,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         MenRel = new javax.swing.JMenu();
         MenRelSer = new javax.swing.JMenuItem();
         MenAge = new javax.swing.JMenu();
+        MenAgeAge = new javax.swing.JMenuItem();
         MenAju = new javax.swing.JMenu();
         MenAjuSob = new javax.swing.JMenuItem();
         MenuApc = new javax.swing.JMenu();
@@ -135,7 +136,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         Menu.add(MenRel);
 
-        MenAge.setText("Agenda");
+        MenAge.setText("Agendamento");
+
+        MenAgeAge.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
+        MenAgeAge.setText("Agenda");
+        MenAgeAge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenAgeAgeActionPerformed(evt);
+            }
+        });
+        MenAge.add(MenAgeAge);
+
         Menu.add(MenAge);
 
         MenAju.setText("Ajuda");
@@ -275,6 +286,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         Desktop.add(bairro);
     }//GEN-LAST:event_MenCidBarActionPerformed
 
+    private void MenAgeAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenAgeAgeActionPerformed
+        // TODO add your handling code here:
+        TelaAgenda agenda = new TelaAgenda();
+        agenda.setVisible(true);
+        Desktop.add(agenda);
+    }//GEN-LAST:event_MenAgeAgeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -313,6 +331,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Desktop;
     private javax.swing.JMenu MenAge;
+    private javax.swing.JMenuItem MenAgeAge;
     private javax.swing.JMenu MenAju;
     private javax.swing.JMenuItem MenAjuSob;
     private javax.swing.JMenu MenCad;

@@ -124,7 +124,7 @@ public class TelaCidade extends javax.swing.JInternalFrame {
                 pst.setString(1, txtCidCod.getText());
                 int apagado = pst.executeUpdate();
                 if (apagado > 0) {
-                    JOptionPane.showMessageDialog(null, "Usuário removido com sucesso!");
+                    JOptionPane.showMessageDialog(null, "Cidade removida com sucesso!");
                     //limpa os campos
                     txtCidCod.setText(null);
                     txtCidNom.setText(null);
