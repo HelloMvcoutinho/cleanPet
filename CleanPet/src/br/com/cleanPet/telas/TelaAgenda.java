@@ -5,8 +5,11 @@
  */
 package br.com.cleanPet.telas;
 
+import java.awt.Color;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,8 +21,8 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
     /**
      * Creates new form TelaAgenda
      */
-    int AnoFixo = 0, MesFixo = 0, DiaFixo;
-    int AnoAltera = 0, MesAltera = 0, DiaAltera = 0;
+    int anoFixo = 0, mesFixo = 0, diaFixo;
+    int anoAltera = 0, mesAltera = 0, diaAltera = 0;
     int valorSelecao = 0;
 
     public TelaAgenda() {
@@ -91,6 +94,14 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         lblD41 = new javax.swing.JLabel();
         lblD42 = new javax.swing.JLabel();
         cboSelMes = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -417,7 +428,39 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
                     .addComponent(lblD42)))
         );
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("2021");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Sexta");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel3.setText("1");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setText("Janeiro");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setText("2021");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setText("Sexta");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        jLabel7.setText("2");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setText("Janeiro");
+
         jLayeredPane1.setLayer(jLayeredPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -426,30 +469,67 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(453, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(143, 143, 143)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(54, 54, 54))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel8))
+                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel4)))))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLayeredPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addComponent(jLayeredPane1)
+                .addContainerGap())
         );
 
-        setBounds(0, 0, 752, 502);
+        setBounds(0, 0, 1178, 584);
     }// </editor-fold>//GEN-END:initComponents
 //Criação do calendario
 
@@ -457,6 +537,14 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<Integer> cboSelAno;
     private javax.swing.JComboBox<String> cboSelMes;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JSpinner jSpinner1;
@@ -515,40 +603,40 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         SimpleDateFormat Mes = new SimpleDateFormat("MM");
         SimpleDateFormat Dia = new SimpleDateFormat("dd");
 
-        AnoFixo = Integer.parseInt(Ano.format(new Date()));
-        MesFixo = Integer.parseInt(Mes.format(new Date()));
-        DiaFixo = Integer.parseInt(Dia.format(new Date()));
+        anoFixo = Integer.parseInt(Ano.format(new Date()));
+        mesFixo = Integer.parseInt(Mes.format(new Date()));
+        diaFixo = Integer.parseInt(Dia.format(new Date()));
         //JOptionPane.showMessageDialog(null, DiaFixo + "/" + MesFixo + "/" + AnoFixo);
-        int AnoMaximo = AnoFixo + 50;
-        for (int i = 2000; i < AnoMaximo; i++) {
+        int anoMaximo = anoFixo + 50;
+        for (int i = 2000; i < anoMaximo; i++) {
             //há possibilidade de utilizar desta forma cbpSelAno.addItem(""+i);, porém alterei o combobox de Strig para Interger
             cboSelAno.addItem(i);
         }
-        cboSelAno.setSelectedItem(AnoFixo);
+        cboSelAno.setSelectedItem(anoFixo);
 
-        if (MesFixo == 1) {
+        if (mesFixo == 1) {
             cboSelMes.setSelectedIndex(0);
-        } else if (MesFixo == 2) {
+        } else if (mesFixo == 2) {
             cboSelMes.setSelectedIndex(1);
-        } else if (MesFixo == 3) {
+        } else if (mesFixo == 3) {
             cboSelMes.setSelectedIndex(2);
-        } else if (MesFixo == 4) {
+        } else if (mesFixo == 4) {
             cboSelMes.setSelectedIndex(3);
-        } else if (MesFixo == 5) {
+        } else if (mesFixo == 5) {
             cboSelMes.setSelectedIndex(4);
-        } else if (MesFixo == 6) {
+        } else if (mesFixo == 6) {
             cboSelMes.setSelectedIndex(5);
-        } else if (MesFixo == 7) {
+        } else if (mesFixo == 7) {
             cboSelMes.setSelectedIndex(6);
-        } else if (MesFixo == 8) {
+        } else if (mesFixo == 8) {
             cboSelMes.setSelectedIndex(7);
-        } else if (MesFixo == 9) {
+        } else if (mesFixo == 9) {
             cboSelMes.setSelectedIndex(8);
-        } else if (MesFixo == 10) {
+        } else if (mesFixo == 10) {
             cboSelMes.setSelectedIndex(9);
-        } else if (MesFixo == 11) {
+        } else if (mesFixo == 11) {
             cboSelMes.setSelectedIndex(10);
-        } else if (MesFixo == 12) {
+        } else if (mesFixo == 12) {
             cboSelMes.setSelectedIndex(11);
         }
     }
@@ -596,5 +684,375 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         lblD41.setText("");
         lblD42.setText("");
         
+        diaAltera = diaFixo;
+        mesAltera = cboSelMes.getSelectedIndex();
+        anoAltera = Integer.parseInt(cboSelAno.getSelectedItem().toString());
+        
+        int totalDiaMes = 0;
+        if(mesAltera == 0){
+            totalDiaMes = 31;
+        }else if (mesAltera == 1){
+            int resultado = (anoAltera % 4);
+            if(resultado == 0){
+                totalDiaMes = 29; //ano é bissesto
+            }else{
+                totalDiaMes = 28; //ano não é bissesto
+            }
+        }else if (mesAltera == 2){
+            totalDiaMes = 31;
+        }else if (mesAltera == 3){
+            totalDiaMes = 30;
+        }else if (mesAltera == 4){
+            totalDiaMes = 31;
+        }else if (mesAltera == 5){
+            totalDiaMes = 30;
+        }else if (mesAltera == 6){
+            totalDiaMes = 31;
+        }else if (mesAltera == 7){
+            totalDiaMes = 30;
+        }else if (mesAltera == 8){
+            totalDiaMes = 31;
+        }else if (mesAltera == 9){
+            totalDiaMes = 30;
+        }else if (mesAltera == 10){
+            totalDiaMes = 31;
+        }else if (mesAltera == 11){
+            totalDiaMes = 30;}
+        else if (mesAltera == 12){
+            totalDiaMes = 31;
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(anoAltera,mesAltera,1);
+        int setaDia = 0;
+        
+        int semana = calendar.get(Calendar.DAY_OF_WEEK);
+        if(semana == Calendar.SUNDAY){
+            setaDia = 1;//System.out.println("Dom");
+        }else if(semana == Calendar.MONDAY){
+            setaDia = 2;//System.out.println("Seg");
+        }else if(semana == Calendar.TUESDAY){
+            setaDia = 3;//System.out.println("Ter");
+        }else if(semana == Calendar.WEDNESDAY){
+            setaDia = 4;//System.out.println("Qua");
+        }else if(semana == Calendar.THURSDAY){
+            setaDia = 5;//System.out.println("Qui");
+        }else if(semana == Calendar.FRIDAY){
+            setaDia = 6;//System.out.println("Sex");
+        }else if(semana == Calendar.SATURDAY){
+            setaDia = 7;//System.out.println("Sab");
+        }
+        
+        for (int i = 1; i <= totalDiaMes; i++){
+            
+            switch (setaDia){
+                case 1:
+                    lblD1.setText(""+i);
+                    break;
+                case 2:
+                    lblD2.setText(""+i);                    
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD2.setForeground(Color.RED);
+                    }else{
+                        lblD2.setForeground(Color.BLACK);
+                    }
+                    break;
+                case 3:
+                    lblD3.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD3.setForeground(Color.RED);
+                    }else{
+                        lblD3.setForeground(Color.BLACK);
+                    }
+                    break;
+                case 4:
+                    lblD4.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD4.setForeground(Color.RED);
+                    }else{
+                        lblD4.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 5:
+                    lblD5.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD5.setForeground(Color.RED);
+                    }else{
+                        lblD5.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 6:
+                    lblD6.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD6.setForeground(Color.RED);
+                    }else{
+                        lblD6.setForeground(Color.BLACK);
+                    }
+                    break;
+                case 7:
+                    lblD7.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD7.setForeground(Color.RED);
+                    }else{
+                        lblD7.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 8:
+                    lblD8.setText(""+i);
+                    break; 
+                case 9:
+                    lblD9.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD9.setForeground(Color.RED);
+                    }else{
+                        lblD9.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 10:
+                    lblD10.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD10.setForeground(Color.RED);
+                    }else{
+                        lblD10.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 11:
+                    lblD11.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD11.setForeground(Color.RED);
+                    }else{
+                        lblD11.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 12:
+                    lblD12.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD12.setForeground(Color.RED);
+                    }else{
+                        lblD12.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 13:
+                    lblD13.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD13.setForeground(Color.RED);
+                    }else{
+                        lblD13.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 14:
+                    lblD14.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD14.setForeground(Color.RED);
+                    }else{
+                        lblD14.setForeground(Color.BLACK);
+                    }
+                    break;
+                case 15:
+                    lblD15.setText(""+i);
+                    break;
+                case 16:
+                    lblD16.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD16.setForeground(Color.RED);
+                    }else{
+                        lblD16.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 17:
+                    lblD17.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD17.setForeground(Color.RED);
+                    }else{
+                        lblD17.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 18:
+                    lblD18.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD18.setForeground(Color.RED);
+                    }else{
+                        lblD18.setForeground(Color.BLACK);
+                    }
+                    break;
+                case 19:
+                    lblD19.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD19.setForeground(Color.RED);
+                    }else{
+                        lblD19.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 20:
+                    lblD20.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD20.setForeground(Color.RED);
+                    }else{
+                        lblD20.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 21:
+                    lblD21.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD21.setForeground(Color.RED);
+                    }else{
+                        lblD21.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 22:
+                    lblD22.setText(""+i);
+                    break; 
+                case 23:
+                    lblD23.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD23.setForeground(Color.RED);
+                    }else{
+                        lblD23.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 24:
+                    lblD24.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD24.setForeground(Color.RED);
+                    }else{
+                        lblD24.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 25:
+                    lblD25.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD25.setForeground(Color.RED);
+                    }else{
+                        lblD25.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 26:
+                    lblD26.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD26.setForeground(Color.RED);
+                    }else{
+                        lblD26.setForeground(Color.BLACK);
+                    }
+                    break;
+                case 27:
+                    lblD27.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD27.setForeground(Color.RED);
+                    }else{
+                        lblD27.setForeground(Color.BLACK);
+                    }
+                    break;
+                case 28:
+                    lblD28.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD28.setForeground(Color.RED);
+                    }else{
+                        lblD28.setForeground(Color.BLACK);
+                    }
+                    break;
+                case 29:
+                    lblD29.setText(""+i);
+                    break;    
+                case 30:
+                    lblD30.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD30.setForeground(Color.RED);
+                    }else{
+                        lblD30.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 31:
+                    lblD31.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD31.setForeground(Color.RED);
+                    }else{
+                        lblD31.setForeground(Color.BLACK);
+                    }
+                    break;
+                case 32:
+                    lblD32.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD32.setForeground(Color.RED);
+                    }else{
+                        lblD32.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 33:
+                    lblD33.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD33.setForeground(Color.RED);
+                    }else{
+                        lblD33.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 34:
+                    lblD34.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD34.setForeground(Color.RED);
+                    }else{
+                        lblD34.setForeground(Color.BLACK);
+                    }
+                    break;
+                case 35:
+                    lblD35.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD35.setForeground(Color.RED);
+                    }else{
+                        lblD35.setForeground(Color.BLACK);
+                    }
+                    break;    
+                case 36:
+                    lblD36.setText(""+i);
+                    break; 
+                case 37:
+                    lblD37.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD37.setForeground(Color.RED);
+                    }else{
+                        lblD37.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 38:
+                    lblD38.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD38.setForeground(Color.RED);
+                    }else{
+                        lblD38.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 39:
+                    lblD39.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD39.setForeground(Color.RED);
+                    }else{
+                        lblD39.setForeground(Color.BLACK);
+                    }
+                    break; 
+                case 40:
+                    lblD40.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD40.setForeground(Color.RED);
+                    }else{
+                        lblD40.setForeground(Color.BLACK);
+                    }
+                    break;
+                case 41:
+                    lblD41.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD41.setForeground(Color.RED);
+                    }else{
+                        lblD41.setForeground(Color.BLACK);
+                    }
+                    break;
+                case 42:
+                    lblD42.setText(""+i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                        lblD42.setForeground(Color.RED);
+                    }else{
+                        lblD42.setForeground(Color.BLACK);
+                    }
+                    break; 
+            }
+            setaDia++;
+    }
     }
 }
