@@ -10,7 +10,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.BevelBorder;
 
 /**
  *
@@ -29,6 +31,8 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         initComponents();
         iniciaCalendario();
         diaCalendario();
+        verificaSemana();
+        
     }
 
     /**
@@ -42,7 +46,7 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jLayeredPane2 = new javax.swing.JLayeredPane();
-        cboSelAno = new javax.swing.JComboBox<>();
+        cboSelAno = new javax.swing.JComboBox();
         jSpinner1 = new javax.swing.JSpinner();
         lblDom = new javax.swing.JLabel();
         lblSeg = new javax.swing.JLabel();
@@ -94,14 +98,15 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         lblD41 = new javax.swing.JLabel();
         lblD42 = new javax.swing.JLabel();
         cboSelMes = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblAnoPag1 = new javax.swing.JLabel();
+        lblSemanaPag1 = new javax.swing.JLabel();
+        lblDiaPag1 = new javax.swing.JLabel();
+        lblMesPag1 = new javax.swing.JLabel();
+        lblAnoPag2 = new javax.swing.JLabel();
+        lblSemanaPag2 = new javax.swing.JLabel();
+        lblDiaPag2 = new javax.swing.JLabel();
+        lblMesPag2 = new javax.swing.JLabel();
+        btnDataHoje = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -114,6 +119,17 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         jLayeredPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         cboSelAno.setEditable(true);
+        cboSelAno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboSelAnoActionPerformed(evt);
+            }
+        });
+
+        jSpinner1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSpinner1StateChanged(evt);
+            }
+        });
 
         lblDom.setForeground(new java.awt.Color(255, 0, 0));
         lblDom.setText("Dom");
@@ -221,6 +237,11 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         lblD42.setText("0");
 
         cboSelMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro", " ", " ", " " }));
+        cboSelMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboSelMesActionPerformed(evt);
+            }
+        });
 
         jLayeredPane2.setLayer(cboSelAno, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane2.setLayer(jSpinner1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -349,9 +370,9 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
                     .addGroup(jLayeredPane2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(cboSelMes, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)
-                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
                         .addComponent(cboSelAno, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -359,10 +380,9 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboSelAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cboSelMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(cboSelMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDom)
@@ -426,41 +446,61 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
                     .addComponent(lblD40)
                     .addComponent(lblD41)
                     .addComponent(lblD42)))
+            .addGroup(jLayeredPane2Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(cboSelAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(152, 152, 152))
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("2021");
+        lblAnoPag1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblAnoPag1.setText("2020");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Sexta");
+        lblSemanaPag1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblSemanaPag1.setText("Sexta");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel3.setText("1");
+        lblDiaPag1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        lblDiaPag1.setText("1");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Janeiro");
+        lblMesPag1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblMesPag1.setText("Janeiro");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel5.setText("2021");
+        lblAnoPag2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblAnoPag2.setText("2020");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("Sexta");
+        lblSemanaPag2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblSemanaPag2.setText("Sexta");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        jLabel7.setText("2");
+        lblDiaPag2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        lblDiaPag2.setText("2");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel8.setText("Janeiro");
+        lblMesPag2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblMesPag2.setText("Janeiro");
+
+        btnDataHoje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/DiaAtual.png"))); // NOI18N
+        btnDataHoje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnDataHojeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnDataHojeMouseExited(evt);
+            }
+        });
+        btnDataHoje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDataHojeActionPerformed(evt);
+            }
+        });
 
         jLayeredPane1.setLayer(jLayeredPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel3, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel4, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel6, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel7, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jLabel8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lblAnoPag1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lblSemanaPag1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lblDiaPag1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lblMesPag1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lblAnoPag2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lblSemanaPag2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lblDiaPag2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(lblMesPag2, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(btnDataHoje, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -469,48 +509,58 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(lblAnoPag1))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(btnDataHoje, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(lblSemanaPag1)
+                    .addComponent(lblDiaPag1)
+                    .addComponent(lblMesPag1))
                 .addGap(143, 143, 143)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
+                .addComponent(lblAnoPag2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 258, Short.MAX_VALUE)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(lblSemanaPag2)
+                    .addComponent(lblDiaPag2)
+                    .addComponent(lblMesPag2))
                 .addGap(54, 54, 54))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(28, 28, 28)
+                        .addComponent(lblSemanaPag2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDiaPag2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAnoPag2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblMesPag2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel8))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblSemanaPag1)
+                                .addGap(47, 47, 47))
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel4)))))
+                                .addContainerGap()
+                                .addComponent(btnDataHoje, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDiaPag1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAnoPag1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblMesPag1)))
                 .addContainerGap(345, Short.MAX_VALUE))
         );
 
@@ -531,23 +581,82 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
 
         setBounds(0, 0, 1178, 584);
     }// </editor-fold>//GEN-END:initComponents
-//Criação do calendario
+
+    private void cboSelMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSelMesActionPerformed
+        // TODO add your handling code here:
+        diaAltera = diaFixo;
+        diaCalendario();
+    }//GEN-LAST:event_cboSelMesActionPerformed
+
+    private void cboSelAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSelAnoActionPerformed
+        // TODO add your handling code here:
+        try{
+            int x = Integer.parseInt(cboSelAno.getSelectedItem().toString());
+            diaAltera = diaFixo;
+            diaCalendario();
+            lblAnoPag1.setText(cboSelAno.getSelectedItem().toString());
+            lblAnoPag2.setText(cboSelAno.getSelectedItem().toString());
+        }catch(Exception e){
+            cboSelAno.setSelectedItem(anoFixo);
+        }
+    }//GEN-LAST:event_cboSelAnoActionPerformed
+
+    private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
+        // TODO add your handling code here:
+        valorSelecao = Integer.parseInt(jSpinner1.getValue().toString());
+        int x = cboSelMes.getSelectedIndex();
+        int ano = Integer.parseInt(cboSelAno.getSelectedItem().toString());
+        
+        if(valorSelecao == -1){
+            if(cboSelMes.getSelectedIndex() != 11){
+               cboSelMes.setSelectedIndex(x + 1); 
+            }else{
+                cboSelMes.setSelectedIndex(0);
+                ano = ano +1;
+                cboSelAno.setSelectedItem(ano);
+            }
+        }
+        if(valorSelecao == +1){
+            if(cboSelMes.getSelectedIndex() != 0){
+               cboSelMes.setSelectedIndex(x - 1); 
+            }else{
+                cboSelMes.setSelectedIndex(11);
+                ano = ano -1;
+                cboSelAno.setSelectedItem(ano);
+            }
+        }
+        jSpinner1.setValue(0);
+    }//GEN-LAST:event_jSpinner1StateChanged
+
+    private void btnDataHojeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataHojeActionPerformed
+        // TODO add your handling code here:
+        iniciaCalendario();
+        diaCalendario();
+        
+        
+    }//GEN-LAST:event_btnDataHojeActionPerformed
+
+    private void btnDataHojeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDataHojeMouseEntered
+        // Coloca borda no btn
+        btnDataHoje.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+    }//GEN-LAST:event_btnDataHojeMouseEntered
+
+    private void btnDataHojeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDataHojeMouseExited
+        // Remover a borda do btn
+        btnDataHoje.setBorder(null);
+    }//GEN-LAST:event_btnDataHojeMouseExited
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Integer> cboSelAno;
+    private javax.swing.JButton btnDataHoje;
+    private javax.swing.JComboBox cboSelAno;
     private javax.swing.JComboBox<String> cboSelMes;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JLabel lblAnoPag1;
+    private javax.swing.JLabel lblAnoPag2;
     private javax.swing.JLabel lblD1;
     private javax.swing.JLabel lblD10;
     private javax.swing.JLabel lblD11;
@@ -590,14 +699,22 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblD7;
     private javax.swing.JLabel lblD8;
     private javax.swing.JLabel lblD9;
+    private javax.swing.JLabel lblDiaPag1;
+    private javax.swing.JLabel lblDiaPag2;
     private javax.swing.JLabel lblDom;
+    private javax.swing.JLabel lblMesPag1;
+    private javax.swing.JLabel lblMesPag2;
     private javax.swing.JLabel lblQua;
     private javax.swing.JLabel lblQui;
     private javax.swing.JLabel lblSab;
     private javax.swing.JLabel lblSeg;
+    private javax.swing.JLabel lblSemanaPag1;
+    private javax.swing.JLabel lblSemanaPag2;
     private javax.swing.JLabel lblSex;
     private javax.swing.JLabel lblTer;
     // End of variables declaration//GEN-END:variables
+    
+    //Criação do calendario
     public void iniciaCalendario() {
         SimpleDateFormat Ano = new SimpleDateFormat("YYYY");
         SimpleDateFormat Mes = new SimpleDateFormat("MM");
@@ -1053,6 +1170,40 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
                     break; 
             }
             setaDia++;
+        }
+        
     }
-    }
+    public void verificaSemana(){
+            try {
+              mesAltera = cboSelMes.getSelectedIndex();
+              anoAltera = Integer.parseInt(cboSelAno.getSelectedItem().toString());
+              Calendar calendarN = Calendar.getInstance();
+              calendarN.set(anoAltera,mesAltera,diaAltera);
+              
+              lblMesPag1.setText(cboSelMes.getSelectedItem().toString());
+              lblMesPag2.setText(cboSelMes.getSelectedItem().toString());
+              
+              lblDiaPag1.setText(""+diaAltera);
+              lblDiaPag2.setText(""+diaAltera);
+              
+              int semanaN = calendarN.get(Calendar.DAY_OF_WEEK);
+              if(semanaN == Calendar.SUNDAY){
+                  lblSemanaPag1.setText("Domingo");
+                  lblSemanaPag2.setText("Domingo");
+              }else if(semanaN == Calendar.MONDAY){
+                  lblSemanaPag1.setText("Segunda");
+                  lblSemanaPag2.setText("Segunda");
+              }else if(semanaN == Calendar.TUESDAY){
+                  lblSemanaPag1.setText("Terça");
+                  lblSemanaPag2.setText("Terça");
+              }else if(semanaN == Calendar.WEDNESDAY){
+                  lblSemanaPag1.setText("Quarta");
+                  lblSemanaPag2.setText("Quarta");
+              }else if(semanaN == Calendar.THURSDAY){
+                  lblSemanaPag1.setText("Quinta");
+                  lblSemanaPag2.setText("Quinta");
+              }
+            } catch (Exception e) {
+            }
+        }
 }
