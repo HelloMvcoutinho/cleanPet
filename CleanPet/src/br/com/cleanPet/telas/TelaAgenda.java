@@ -6,6 +6,7 @@
 package br.com.cleanPet.telas;
 
 import java.awt.Color;
+import java.awt.event.MouseListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,10 +30,10 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
 
     public TelaAgenda() {
         initComponents();
+        calendarioEvent();
         iniciaCalendario();
         diaCalendario();
-        verificaSemana();
-        
+
     }
 
     /**
@@ -45,6 +46,15 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        lblAnoPag1 = new javax.swing.JLabel();
+        lblSemanaPag1 = new javax.swing.JLabel();
+        lblDiaPag1 = new javax.swing.JLabel();
+        lblMesPag1 = new javax.swing.JLabel();
+        lblAnoPag2 = new javax.swing.JLabel();
+        lblSemanaPag2 = new javax.swing.JLabel();
+        lblDiaPag2 = new javax.swing.JLabel();
+        lblMesPag2 = new javax.swing.JLabel();
+        btnDataHoje = new javax.swing.JButton();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         cboSelAno = new javax.swing.JComboBox();
         jSpinner1 = new javax.swing.JSpinner();
@@ -98,15 +108,6 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         lblD41 = new javax.swing.JLabel();
         lblD42 = new javax.swing.JLabel();
         cboSelMes = new javax.swing.JComboBox<>();
-        lblAnoPag1 = new javax.swing.JLabel();
-        lblSemanaPag1 = new javax.swing.JLabel();
-        lblDiaPag1 = new javax.swing.JLabel();
-        lblMesPag1 = new javax.swing.JLabel();
-        lblAnoPag2 = new javax.swing.JLabel();
-        lblSemanaPag2 = new javax.swing.JLabel();
-        lblDiaPag2 = new javax.swing.JLabel();
-        lblMesPag2 = new javax.swing.JLabel();
-        btnDataHoje = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -116,7 +117,48 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        lblAnoPag1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblAnoPag1.setText("2020");
+
+        lblSemanaPag1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblSemanaPag1.setText("Sexta");
+
+        lblDiaPag1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        lblDiaPag1.setText("1");
+
+        lblMesPag1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblMesPag1.setText("Janeiro");
+
+        lblAnoPag2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblAnoPag2.setText("2020");
+
+        lblSemanaPag2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblSemanaPag2.setText("Sexta");
+
+        lblDiaPag2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        lblDiaPag2.setText("2");
+
+        lblMesPag2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblMesPag2.setText("Janeiro");
+
+        btnDataHoje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/DiaAtual.png"))); // NOI18N
+        btnDataHoje.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnDataHojeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnDataHojeMouseExited(evt);
+            }
+        });
+        btnDataHoje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDataHojeActionPerformed(evt);
+            }
+        });
+
+        jLayeredPane2.setBackground(java.awt.Color.white);
         jLayeredPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLayeredPane2.setOpaque(true);
 
         cboSelAno.setEditable(true);
         cboSelAno.addActionListener(new java.awt.event.ActionListener() {
@@ -132,109 +174,242 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         });
 
         lblDom.setForeground(new java.awt.Color(255, 0, 0));
+        lblDom.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDom.setText("Dom");
 
+        lblSeg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSeg.setText("Seg");
 
+        lblTer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTer.setText("Ter");
 
+        lblQua.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblQua.setText("Qua");
 
+        lblQui.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblQui.setText("Qui");
 
+        lblSex.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSex.setText("Sex");
 
+        lblSab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSab.setText("Sab");
 
+        lblD1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblD1.setForeground(new java.awt.Color(255, 0, 0));
+        lblD1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD1.setText("0");
+        lblD1.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD2.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD2.setText("0");
+        lblD2.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD3.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD3.setText("0");
+        lblD3.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD4.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD4.setText("0");
+        lblD4.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD5.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD5.setText("0");
+        lblD5.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD6.setText("0");
+        lblD6.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD7.setText("0");
+        lblD7.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD8.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblD8.setForeground(new java.awt.Color(255, 0, 0));
+        lblD8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD8.setText("0");
+        lblD8.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD9.setText("0");
+        lblD9.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD10.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD10.setText("0");
+        lblD10.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD11.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD11.setText("0");
+        lblD11.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD12.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD12.setText("0");
+        lblD12.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD13.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD13.setText("0");
+        lblD13.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD14.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD14.setText("0");
+        lblD14.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD15.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblD15.setForeground(new java.awt.Color(255, 0, 0));
+        lblD15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD15.setText("0");
+        lblD15.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD16.setText("0");
+        lblD16.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD17.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD17.setText("0");
+        lblD17.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD18.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD18.setText("0");
+        lblD18.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD19.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD19.setText("0");
+        lblD19.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD20.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD20.setText("0");
+        lblD20.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD21.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD21.setText("0");
+        lblD21.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD22.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblD22.setForeground(new java.awt.Color(255, 0, 0));
+        lblD22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD22.setText("0");
+        lblD22.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD23.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD23.setText("0");
+        lblD23.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD24.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD24.setText("0");
+        lblD24.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD25.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD25.setText("0");
+        lblD25.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD26.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD26.setText("0");
+        lblD26.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD27.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD27.setText("0");
+        lblD27.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD28.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD28.setText("0");
+        lblD28.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD29.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblD29.setForeground(new java.awt.Color(255, 0, 0));
+        lblD29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD29.setText("0");
+        lblD29.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD30.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD30.setText("0");
+        lblD30.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD31.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD31.setText("0");
+        lblD31.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD32.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD32.setText("0");
+        lblD32.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD33.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD33.setText("0");
+        lblD33.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD34.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD34.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD34.setText("0");
+        lblD34.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD35.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD35.setText("0");
+        lblD35.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD36.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         lblD36.setForeground(new java.awt.Color(255, 0, 0));
+        lblD36.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD36.setText("0");
+        lblD36.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD37.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD37.setText("0");
+        lblD37.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD38.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD38.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD38.setText("0");
+        lblD38.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD39.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD39.setText("0");
+        lblD39.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD40.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD40.setText("0");
+        lblD40.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD41.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD41.setText("0");
+        lblD41.setPreferredSize(new java.awt.Dimension(14, 14));
 
+        lblD42.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblD42.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblD42.setText("0");
+        lblD42.setPreferredSize(new java.awt.Dimension(14, 14));
 
         cboSelMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro", " ", " ", " " }));
         cboSelMes.addActionListener(new java.awt.event.ActionListener() {
@@ -301,89 +476,88 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         jLayeredPane2Layout.setHorizontalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jLayeredPane2Layout.createSequentialGroup()
                         .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(lblDom)
-                            .addComponent(lblD1)
-                            .addComponent(lblD8)
-                            .addComponent(lblD15)
-                            .addComponent(lblD22)
-                            .addComponent(lblD29)
-                            .addComponent(lblD36))
-                        .addGap(18, 18, 18)
+                            .addComponent(lblD29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDom))
+                        .addGap(10, 10, 10)
                         .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(lblSeg)
-                            .addComponent(lblD2)
-                            .addComponent(lblD9)
-                            .addComponent(lblD16)
-                            .addComponent(lblD23)
-                            .addComponent(lblD30)
-                            .addComponent(lblD37))
-                        .addGap(18, 18, 18)
-                        .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(lblD3)
-                                .addComponent(lblD10)
-                                .addComponent(lblD17)
-                                .addComponent(lblD24)
-                                .addComponent(lblD31)
-                                .addComponent(lblD38))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane2Layout.createSequentialGroup()
-                                .addComponent(lblTer)
-                                .addGap(18, 18, 18)))
+                            .addComponent(lblD2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSeg))
+                        .addGap(10, 10, 10)
                         .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(lblQua)
-                            .addComponent(lblD4)
-                            .addComponent(lblD11)
-                            .addComponent(lblD18)
-                            .addComponent(lblD25)
-                            .addComponent(lblD32)
-                            .addComponent(lblD39))
-                        .addGap(18, 18, 18)
+                            .addComponent(lblD3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTer))
+                        .addGap(10, 10, 10)
                         .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(lblQui)
-                            .addComponent(lblD5)
-                            .addComponent(lblD12)
-                            .addComponent(lblD19)
-                            .addComponent(lblD26)
-                            .addComponent(lblD33)
-                            .addComponent(lblD40))
-                        .addGap(18, 18, 18)
+                            .addComponent(lblD4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblQua))
+                        .addGap(10, 10, 10)
                         .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(lblSex)
-                            .addComponent(lblD6)
-                            .addComponent(lblD13)
-                            .addComponent(lblD20)
-                            .addComponent(lblD27)
-                            .addComponent(lblD34)
-                            .addComponent(lblD41))
-                        .addGap(18, 18, 18)
+                            .addComponent(lblD5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblQui))
+                        .addGap(10, 10, 10)
                         .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(lblSab)
-                            .addComponent(lblD7)
-                            .addComponent(lblD14)
-                            .addComponent(lblD21)
-                            .addComponent(lblD28)
-                            .addComponent(lblD35)
-                            .addComponent(lblD42)))
+                            .addComponent(lblD6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSex))
+                        .addGap(10, 10, 10)
+                        .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(lblD7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblD42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSab)))
                     .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cboSelMes, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboSelMes, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
-                        .addComponent(cboSelAno, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cboSelAno, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jLayeredPane2Layout.setVerticalGroup(
             jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                .addContainerGap()
+                .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboSelAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboSelMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDom)
                     .addComponent(lblSeg)
@@ -392,106 +566,63 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
                     .addComponent(lblQui)
                     .addComponent(lblSex)
                     .addComponent(lblSab))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblD1)
-                    .addComponent(lblD2)
-                    .addComponent(lblD3)
-                    .addComponent(lblD4)
-                    .addComponent(lblD5)
-                    .addComponent(lblD6)
-                    .addComponent(lblD7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lblD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblD8)
-                    .addComponent(lblD9)
-                    .addComponent(lblD10)
-                    .addComponent(lblD11)
-                    .addComponent(lblD12)
-                    .addComponent(lblD13)
-                    .addComponent(lblD14))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lblD8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblD15)
-                    .addComponent(lblD16)
-                    .addComponent(lblD17)
-                    .addComponent(lblD18)
-                    .addComponent(lblD19)
-                    .addComponent(lblD20)
-                    .addComponent(lblD21))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lblD15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblD22)
-                    .addComponent(lblD23)
-                    .addComponent(lblD24)
-                    .addComponent(lblD25)
-                    .addComponent(lblD26)
-                    .addComponent(lblD27)
-                    .addComponent(lblD28))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lblD22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblD29)
-                    .addComponent(lblD30)
-                    .addComponent(lblD31)
-                    .addComponent(lblD32)
-                    .addComponent(lblD33)
-                    .addComponent(lblD34)
-                    .addComponent(lblD35))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lblD29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jLayeredPane2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblD36)
-                    .addComponent(lblD37)
-                    .addComponent(lblD38)
-                    .addComponent(lblD39)
-                    .addComponent(lblD40)
-                    .addComponent(lblD41)
-                    .addComponent(lblD42)))
-            .addGroup(jLayeredPane2Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(cboSelAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(152, 152, 152))
+                    .addComponent(lblD36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblD42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
-        lblAnoPag1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblAnoPag1.setText("2020");
-
-        lblSemanaPag1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblSemanaPag1.setText("Sexta");
-
-        lblDiaPag1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        lblDiaPag1.setText("1");
-
-        lblMesPag1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblMesPag1.setText("Janeiro");
-
-        lblAnoPag2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblAnoPag2.setText("2020");
-
-        lblSemanaPag2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblSemanaPag2.setText("Sexta");
-
-        lblDiaPag2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        lblDiaPag2.setText("2");
-
-        lblMesPag2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblMesPag2.setText("Janeiro");
-
-        btnDataHoje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/cleanPet/icones/DiaAtual.png"))); // NOI18N
-        btnDataHoje.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnDataHojeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnDataHojeMouseExited(evt);
-            }
-        });
-        btnDataHoje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDataHojeActionPerformed(evt);
-            }
-        });
-
-        jLayeredPane1.setLayer(jLayeredPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblAnoPag1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblSemanaPag1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblDiaPag1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -501,29 +632,27 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         jLayeredPane1.setLayer(lblDiaPag2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(lblMesPag2, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(btnDataHoje, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLayeredPane2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(lblAnoPag1))
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(btnDataHoje, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addComponent(btnDataHoje, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                .addComponent(lblAnoPag1)
+                .addGap(48, 48, 48)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(lblSemanaPag1)
                     .addComponent(lblDiaPag1)
                     .addComponent(lblMesPag1))
-                .addGap(143, 143, 143)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
                 .addComponent(lblAnoPag2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 258, Short.MAX_VALUE)
+                .addGap(48, 48, 48)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(lblSemanaPag2)
                     .addComponent(lblDiaPag2)
@@ -532,108 +661,58 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(lblSemanaPag2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDiaPag2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAnoPag2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblMesPag2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                            .addComponent(lblSemanaPag2)
+                            .addComponent(lblSemanaPag1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblSemanaPag1)
-                                .addGap(47, 47, 47))
+                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                        .addComponent(lblAnoPag2)
+                                        .addGap(30, 30, 30))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
+                                        .addComponent(lblDiaPag2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addComponent(lblMesPag2))
                             .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(btnDataHoje, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDiaPag1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblAnoPag1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblMesPag1)))
-                .addContainerGap(345, Short.MAX_VALUE))
+                                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDiaPag1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblAnoPag1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblMesPag1))))
+                    .addComponent(btnDataHoje, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(305, 305, 305))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLayeredPane1)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1)
-                .addContainerGap())
+            .addComponent(jLayeredPane1)
         );
 
         setBounds(0, 0, 1178, 584);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cboSelMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSelMesActionPerformed
-        // TODO add your handling code here:
-        diaAltera = diaFixo;
-        diaCalendario();
-    }//GEN-LAST:event_cboSelMesActionPerformed
-
-    private void cboSelAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSelAnoActionPerformed
-        // TODO add your handling code here:
-        try{
-            int x = Integer.parseInt(cboSelAno.getSelectedItem().toString());
-            diaAltera = diaFixo;
-            diaCalendario();
-            lblAnoPag1.setText(cboSelAno.getSelectedItem().toString());
-            lblAnoPag2.setText(cboSelAno.getSelectedItem().toString());
-        }catch(Exception e){
-            cboSelAno.setSelectedItem(anoFixo);
-        }
-    }//GEN-LAST:event_cboSelAnoActionPerformed
-
-    private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
-        // TODO add your handling code here:
-        valorSelecao = Integer.parseInt(jSpinner1.getValue().toString());
-        int x = cboSelMes.getSelectedIndex();
-        int ano = Integer.parseInt(cboSelAno.getSelectedItem().toString());
-        
-        if(valorSelecao == -1){
-            if(cboSelMes.getSelectedIndex() != 11){
-               cboSelMes.setSelectedIndex(x + 1); 
-            }else{
-                cboSelMes.setSelectedIndex(0);
-                ano = ano +1;
-                cboSelAno.setSelectedItem(ano);
-            }
-        }
-        if(valorSelecao == +1){
-            if(cboSelMes.getSelectedIndex() != 0){
-               cboSelMes.setSelectedIndex(x - 1); 
-            }else{
-                cboSelMes.setSelectedIndex(11);
-                ano = ano -1;
-                cboSelAno.setSelectedItem(ano);
-            }
-        }
-        jSpinner1.setValue(0);
-    }//GEN-LAST:event_jSpinner1StateChanged
-
     private void btnDataHojeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataHojeActionPerformed
         // TODO add your handling code here:
         iniciaCalendario();
         diaCalendario();
-        
-        
+
+
     }//GEN-LAST:event_btnDataHojeActionPerformed
 
     private void btnDataHojeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDataHojeMouseEntered
@@ -646,6 +725,51 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         btnDataHoje.setBorder(null);
     }//GEN-LAST:event_btnDataHojeMouseExited
 
+    private void cboSelMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSelMesActionPerformed
+        // TODO add your handling code here:
+        diaAltera = diaFixo;
+        diaCalendario();
+    }//GEN-LAST:event_cboSelMesActionPerformed
+
+    private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
+        // TODO add your handling code here:
+        valorSelecao = Integer.parseInt(jSpinner1.getValue().toString());
+        int x = cboSelMes.getSelectedIndex();
+        int ano = Integer.parseInt(cboSelAno.getSelectedItem().toString());
+
+        if (valorSelecao == -1) {
+            if (cboSelMes.getSelectedIndex() != 11) {
+                cboSelMes.setSelectedIndex(x + 1);
+            } else {
+                cboSelMes.setSelectedIndex(0);
+                ano = ano + 1;
+                cboSelAno.setSelectedItem(ano);
+            }
+        }
+        if (valorSelecao == +1) {
+            if (cboSelMes.getSelectedIndex() != 0) {
+                cboSelMes.setSelectedIndex(x - 1);
+            } else {
+                cboSelMes.setSelectedIndex(11);
+                ano = ano - 1;
+                cboSelAno.setSelectedItem(ano);
+            }
+        }
+        jSpinner1.setValue(0);
+    }//GEN-LAST:event_jSpinner1StateChanged
+
+    private void cboSelAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboSelAnoActionPerformed
+        // TODO add your handling code here:
+        try {
+            int x = Integer.parseInt(cboSelAno.getSelectedItem().toString());
+            diaAltera = diaFixo;
+            diaCalendario();
+            lblAnoPag1.setText(cboSelAno.getSelectedItem().toString());
+            lblAnoPag2.setText(cboSelAno.getSelectedItem().toString());
+        } catch (Exception e) {
+            cboSelAno.setSelectedItem(anoFixo);
+        }
+    }//GEN-LAST:event_cboSelAnoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -713,7 +837,7 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lblSex;
     private javax.swing.JLabel lblTer;
     // End of variables declaration//GEN-END:variables
-    
+
     //Criação do calendario
     public void iniciaCalendario() {
         SimpleDateFormat Ano = new SimpleDateFormat("YYYY");
@@ -757,7 +881,8 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
             cboSelMes.setSelectedIndex(11);
         }
     }
-    public void diaCalendario(){
+
+    public void diaCalendario() {
         lblD1.setText("");
         lblD2.setText("");
         lblD3.setText("");
@@ -800,410 +925,1619 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         lblD40.setText("");
         lblD41.setText("");
         lblD42.setText("");
-        
+
         diaAltera = diaFixo;
         mesAltera = cboSelMes.getSelectedIndex();
         anoAltera = Integer.parseInt(cboSelAno.getSelectedItem().toString());
-        
+
         int totalDiaMes = 0;
-        if(mesAltera == 0){
+        if (mesAltera == 0) {
             totalDiaMes = 31;
-        }else if (mesAltera == 1){
+        } else if (mesAltera == 1) {
             int resultado = (anoAltera % 4);
-            if(resultado == 0){
+            if (resultado == 0) {
                 totalDiaMes = 29; //ano é bissesto
-            }else{
+            } else {
                 totalDiaMes = 28; //ano não é bissesto
             }
-        }else if (mesAltera == 2){
+        } else if (mesAltera == 2) {
             totalDiaMes = 31;
-        }else if (mesAltera == 3){
+        } else if (mesAltera == 3) {
             totalDiaMes = 30;
-        }else if (mesAltera == 4){
+        } else if (mesAltera == 4) {
             totalDiaMes = 31;
-        }else if (mesAltera == 5){
+        } else if (mesAltera == 5) {
             totalDiaMes = 30;
-        }else if (mesAltera == 6){
+        } else if (mesAltera == 6) {
             totalDiaMes = 31;
-        }else if (mesAltera == 7){
+        } else if (mesAltera == 7) {
             totalDiaMes = 30;
-        }else if (mesAltera == 8){
+        } else if (mesAltera == 8) {
             totalDiaMes = 31;
-        }else if (mesAltera == 9){
+        } else if (mesAltera == 9) {
             totalDiaMes = 30;
-        }else if (mesAltera == 10){
+        } else if (mesAltera == 10) {
             totalDiaMes = 31;
-        }else if (mesAltera == 11){
-            totalDiaMes = 30;}
-        else if (mesAltera == 12){
+        } else if (mesAltera == 11) {
+            totalDiaMes = 30;
+        } else if (mesAltera == 12) {
             totalDiaMes = 31;
         }
         Calendar calendar = Calendar.getInstance();
-        calendar.set(anoAltera,mesAltera,1);
+        calendar.set(anoAltera, mesAltera, 1);
         int setaDia = 0;
-        
+
         int semana = calendar.get(Calendar.DAY_OF_WEEK);
-        if(semana == Calendar.SUNDAY){
+        if (semana == Calendar.SUNDAY) {
             setaDia = 1;//System.out.println("Dom");
-        }else if(semana == Calendar.MONDAY){
+        } else if (semana == Calendar.MONDAY) {
             setaDia = 2;//System.out.println("Seg");
-        }else if(semana == Calendar.TUESDAY){
+        } else if (semana == Calendar.TUESDAY) {
             setaDia = 3;//System.out.println("Ter");
-        }else if(semana == Calendar.WEDNESDAY){
+        } else if (semana == Calendar.WEDNESDAY) {
             setaDia = 4;//System.out.println("Qua");
-        }else if(semana == Calendar.THURSDAY){
+        } else if (semana == Calendar.THURSDAY) {
             setaDia = 5;//System.out.println("Qui");
-        }else if(semana == Calendar.FRIDAY){
+        } else if (semana == Calendar.FRIDAY) {
             setaDia = 6;//System.out.println("Sex");
-        }else if(semana == Calendar.SATURDAY){
+        } else if (semana == Calendar.SATURDAY) {
             setaDia = 7;//System.out.println("Sab");
         }
-        
-        for (int i = 1; i <= totalDiaMes; i++){
-            
-            switch (setaDia){
+
+        for (int i = 1; i <= totalDiaMes; i++) {
+
+            switch (setaDia) {
                 case 1:
-                    lblD1.setText(""+i);
+                    lblD1.setText("" + i);
                     break;
                 case 2:
-                    lblD2.setText(""+i);                    
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD2.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD2.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD2.setForeground(Color.BLACK);
                     }
                     break;
                 case 3:
-                    lblD3.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD3.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD3.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD3.setForeground(Color.BLACK);
                     }
                     break;
                 case 4:
-                    lblD4.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD4.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD4.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD4.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 5:
-                    lblD5.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD5.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD5.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD5.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 6:
-                    lblD6.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD6.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD6.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD6.setForeground(Color.BLACK);
                     }
                     break;
                 case 7:
-                    lblD7.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD7.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD7.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD7.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 8:
-                    lblD8.setText(""+i);
-                    break; 
+                    lblD8.setText("" + i);
+                    break;
                 case 9:
-                    lblD9.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD9.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD9.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD9.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 10:
-                    lblD10.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD10.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD10.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD10.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 11:
-                    lblD11.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD11.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD11.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD11.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 12:
-                    lblD12.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD12.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD12.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD12.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 13:
-                    lblD13.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD13.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD13.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD13.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 14:
-                    lblD14.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD14.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD14.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD14.setForeground(Color.BLACK);
                     }
                     break;
                 case 15:
-                    lblD15.setText(""+i);
+                    lblD15.setText("" + i);
                     break;
                 case 16:
-                    lblD16.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD16.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD16.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD16.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 17:
-                    lblD17.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD17.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD17.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD17.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 18:
-                    lblD18.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD18.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD18.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD18.setForeground(Color.BLACK);
                     }
                     break;
                 case 19:
-                    lblD19.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD19.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD19.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD19.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 20:
-                    lblD20.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD20.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD20.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD20.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 21:
-                    lblD21.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD21.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD21.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD21.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 22:
-                    lblD22.setText(""+i);
-                    break; 
+                    lblD22.setText("" + i);
+                    break;
                 case 23:
-                    lblD23.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD23.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD23.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD23.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 24:
-                    lblD24.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD24.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD24.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD24.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 25:
-                    lblD25.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD25.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD25.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD25.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 26:
-                    lblD26.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD26.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD26.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD26.setForeground(Color.BLACK);
                     }
                     break;
                 case 27:
-                    lblD27.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD27.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD27.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD27.setForeground(Color.BLACK);
                     }
                     break;
                 case 28:
-                    lblD28.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD28.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD28.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD28.setForeground(Color.BLACK);
                     }
                     break;
                 case 29:
-                    lblD29.setText(""+i);
-                    break;    
+                    lblD29.setText("" + i);
+                    break;
                 case 30:
-                    lblD30.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD30.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD30.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD30.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 31:
-                    lblD31.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD31.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD31.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD31.setForeground(Color.BLACK);
                     }
                     break;
                 case 32:
-                    lblD32.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD32.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD32.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD32.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 33:
-                    lblD33.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD33.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD33.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD33.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 34:
-                    lblD34.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD34.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD34.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD34.setForeground(Color.BLACK);
                     }
                     break;
                 case 35:
-                    lblD35.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD35.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD35.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD35.setForeground(Color.BLACK);
                     }
-                    break;    
+                    break;
                 case 36:
-                    lblD36.setText(""+i);
-                    break; 
+                    lblD36.setText("" + i);
+                    break;
                 case 37:
-                    lblD37.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD37.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD37.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD37.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 38:
-                    lblD38.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD38.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD38.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD38.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 39:
-                    lblD39.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD39.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD39.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD39.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
                 case 40:
-                    lblD40.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD40.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD40.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD40.setForeground(Color.BLACK);
                     }
                     break;
                 case 41:
-                    lblD41.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD41.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD41.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD41.setForeground(Color.BLACK);
                     }
                     break;
                 case 42:
-                    lblD42.setText(""+i);
-                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo ){
+                    lblD42.setText("" + i);
+                    if (i == diaFixo & mesAltera == mesFixo - 1 & anoAltera == anoFixo) {
                         lblD42.setForeground(Color.RED);
-                    }else{
+                    } else {
                         lblD42.setForeground(Color.BLACK);
                     }
-                    break; 
+                    break;
             }
             setaDia++;
         }
-        
-    }
-    public void verificaSemana(){
-            try {
-              mesAltera = cboSelMes.getSelectedIndex();
-              anoAltera = Integer.parseInt(cboSelAno.getSelectedItem().toString());
-              Calendar calendarN = Calendar.getInstance();
-              calendarN.set(anoAltera,mesAltera,diaAltera);
-              
-              lblMesPag1.setText(cboSelMes.getSelectedItem().toString());
-              lblMesPag2.setText(cboSelMes.getSelectedItem().toString());
-              
-              lblDiaPag1.setText(""+diaAltera);
-              lblDiaPag2.setText(""+diaAltera);
-              
-              int semanaN = calendarN.get(Calendar.DAY_OF_WEEK);
-              if(semanaN == Calendar.SUNDAY){
-                  lblSemanaPag1.setText("Domingo");
-                  lblSemanaPag2.setText("Domingo");
-              }else if(semanaN == Calendar.MONDAY){
-                  lblSemanaPag1.setText("Segunda");
-                  lblSemanaPag2.setText("Segunda");
-              }else if(semanaN == Calendar.TUESDAY){
-                  lblSemanaPag1.setText("Terça");
-                  lblSemanaPag2.setText("Terça");
-              }else if(semanaN == Calendar.WEDNESDAY){
-                  lblSemanaPag1.setText("Quarta");
-                  lblSemanaPag2.setText("Quarta");
-              }else if(semanaN == Calendar.THURSDAY){
-                  lblSemanaPag1.setText("Quinta");
-                  lblSemanaPag2.setText("Quinta");
-              }
-            } catch (Exception e) {
-            }
+        if (!"".equals(lblD1.getText())) {
+            lblD1.setOpaque(true);
+        } else {
+            lblD1.setOpaque(false);
         }
+        if (!"".equals(lblD2.getText())) {
+            lblD2.setOpaque(true);
+        } else {
+            lblD2.setOpaque(false);
+        }
+        if (!"".equals(lblD3.getText())) {
+            lblD3.setOpaque(true);
+        } else {
+            lblD3.setOpaque(false);
+        }
+        if (!"".equals(lblD4.getText())) {
+            lblD4.setOpaque(true);
+        } else {
+            lblD4.setOpaque(false);
+        }
+        if (!"".equals(lblD5.getText())) {
+            lblD5.setOpaque(true);
+        } else {
+            lblD5.setOpaque(false);
+        }
+        if (!"".equals(lblD6.getText())) {
+            lblD6.setOpaque(true);
+        } else {
+            lblD6.setOpaque(false);
+        }
+        if (!"".equals(lblD7.getText())) {
+            lblD7.setOpaque(true);
+        } else {
+            lblD7.setOpaque(false);
+        }
+        if (!"".equals(lblD8.getText())) {
+            lblD8.setOpaque(true);
+        } else {
+            lblD8.setOpaque(false);
+        }
+        if (!"".equals(lblD9.getText())) {
+            lblD9.setOpaque(true);
+        } else {
+            lblD9.setOpaque(false);
+        }
+        if (!"".equals(lblD10.getText())) {
+            lblD10.setOpaque(true);
+        } else {
+            lblD10.setOpaque(false);
+        }
+        if (!"".equals(lblD11.getText())) {
+            lblD11.setOpaque(true);
+        } else {
+            lblD11.setOpaque(false);
+        }
+        if (!"".equals(lblD12.getText())) {
+            lblD12.setOpaque(true);
+        } else {
+            lblD12.setOpaque(false);
+        }
+        if (!"".equals(lblD13.getText())) {
+            lblD13.setOpaque(true);
+        } else {
+            lblD13.setOpaque(false);
+        }
+        if (!"".equals(lblD14.getText())) {
+            lblD14.setOpaque(true);
+        } else {
+            lblD14.setOpaque(false);
+        }
+        if (!"".equals(lblD15.getText())) {
+            lblD15.setOpaque(true);
+        } else {
+            lblD15.setOpaque(false);
+        }
+        if (!"".equals(lblD16.getText())) {
+            lblD16.setOpaque(true);
+        } else {
+            lblD16.setOpaque(false);
+        }
+        if (!"".equals(lblD17.getText())) {
+            lblD17.setOpaque(true);
+        } else {
+            lblD17.setOpaque(false);
+        }
+        if (!"".equals(lblD18.getText())) {
+            lblD18.setOpaque(true);
+        } else {
+            lblD18.setOpaque(false);
+        }
+        if (!"".equals(lblD19.getText())) {
+            lblD19.setOpaque(true);
+        } else {
+            lblD19.setOpaque(false);
+        }
+        if (!"".equals(lblD20.getText())) {
+            lblD20.setOpaque(true);
+        } else {
+            lblD20.setOpaque(false);
+        }
+        if (!"".equals(lblD21.getText())) {
+            lblD21.setOpaque(true);
+        } else {
+            lblD21.setOpaque(false);
+        }
+        if (!"".equals(lblD22.getText())) {
+            lblD22.setOpaque(true);
+        } else {
+            lblD22.setOpaque(false);
+        }
+        if (!"".equals(lblD23.getText())) {
+            lblD23.setOpaque(true);
+        } else {
+            lblD23.setOpaque(false);
+        }
+        if (!"".equals(lblD24.getText())) {
+            lblD24.setOpaque(true);
+        } else {
+            lblD24.setOpaque(false);
+        }
+        if (!"".equals(lblD25.getText())) {
+            lblD25.setOpaque(true);
+        } else {
+            lblD25.setOpaque(false);
+        }
+        if (!"".equals(lblD26.getText())) {
+            lblD26.setOpaque(true);
+        } else {
+            lblD26.setOpaque(false);
+        }
+        if (!"".equals(lblD27.getText())) {
+            lblD27.setOpaque(true);
+        } else {
+            lblD27.setOpaque(false);
+        }
+        if (!"".equals(lblD28.getText())) {
+            lblD28.setOpaque(true);
+        } else {
+            lblD28.setOpaque(false);
+        }
+        if (!"".equals(lblD29.getText())) {
+            lblD29.setOpaque(true);
+        } else {
+            lblD29.setOpaque(false);
+        }
+        if (!"".equals(lblD30.getText())) {
+            lblD30.setOpaque(true);
+        } else {
+            lblD30.setOpaque(false);
+        }
+        if (!"".equals(lblD31.getText())) {
+            lblD31.setOpaque(true);
+        } else {
+            lblD31.setOpaque(false);
+        }
+        if (!"".equals(lblD32.getText())) {
+            lblD32.setOpaque(true);
+        } else {
+            lblD32.setOpaque(false);
+        }
+        if (!"".equals(lblD33.getText())) {
+            lblD33.setOpaque(true);
+        } else {
+            lblD33.setOpaque(false);
+        }
+        if (!"".equals(lblD34.getText())) {
+            lblD34.setOpaque(true);
+        } else {
+            lblD34.setOpaque(false);
+        }
+        if (!"".equals(lblD35.getText())) {
+            lblD35.setOpaque(true);
+        } else {
+            lblD35.setOpaque(false);
+        }
+        if (!"".equals(lblD36.getText())) {
+            lblD36.setOpaque(true);
+        } else {
+            lblD36.setOpaque(false);
+        }
+        if (!"".equals(lblD37.getText())) {
+            lblD37.setOpaque(true);
+        } else {
+            lblD37.setOpaque(false);
+        }
+        if (!"".equals(lblD38.getText())) {
+            lblD38.setOpaque(true);
+        } else {
+            lblD38.setOpaque(false);
+        }
+        if (!"".equals(lblD39.getText())) {
+            lblD39.setOpaque(true);
+        } else {
+            lblD39.setOpaque(false);
+        }
+        if (!"".equals(lblD39.getText())) {
+            lblD39.setOpaque(true);
+        } else {
+            lblD39.setOpaque(false);
+        }
+        if (!"".equals(lblD39.getText())) {
+            lblD39.setOpaque(true);
+        } else {
+            lblD39.setOpaque(false);
+        }
+        if (!"".equals(lblD40.getText())) {
+            lblD40.setOpaque(true);
+        } else {
+            lblD40.setOpaque(false);
+        }
+        if (!"".equals(lblD41.getText())) {
+            lblD41.setOpaque(true);
+        } else {
+            lblD41.setOpaque(false);
+        }
+        if (!"".equals(lblD42.getText())) {
+            lblD42.setOpaque(true);
+        } else {
+            lblD42.setOpaque(false);
+        }
+        verificaSemana();
+    }
+    /*
+    *Metodo que verifica o dia da semana e faz a alteração dos labels lblSemanaPag1 e 2 
+    */
+    public void verificaSemana() {
+        try {
+            mesAltera = cboSelMes.getSelectedIndex();
+            anoAltera = Integer.parseInt(cboSelAno.getSelectedItem().toString());
+            Calendar calendarN = Calendar.getInstance();
+            calendarN.set(anoAltera, mesAltera, diaAltera);
+
+            lblMesPag1.setText(cboSelMes.getSelectedItem().toString());
+            lblMesPag2.setText(cboSelMes.getSelectedItem().toString());
+
+            lblDiaPag1.setText("" + diaAltera);
+            lblDiaPag2.setText("" + diaAltera);
+
+            int semanaN = calendarN.get(Calendar.DAY_OF_WEEK);
+            if (semanaN == Calendar.SUNDAY) {
+                lblSemanaPag1.setText("Domingo");
+                lblSemanaPag2.setText("Domingo");
+            } else if (semanaN == Calendar.MONDAY) {
+                lblSemanaPag1.setText("Segunda");
+                lblSemanaPag2.setText("Segunda");
+            } else if (semanaN == Calendar.TUESDAY) {
+                lblSemanaPag1.setText("Terça");
+                lblSemanaPag2.setText("Terça");
+            } else if (semanaN == Calendar.WEDNESDAY) {
+                lblSemanaPag1.setText("Quarta");
+                lblSemanaPag2.setText("Quarta");
+            } else if (semanaN == Calendar.THURSDAY) {
+                lblSemanaPag1.setText("Quinta");
+                lblSemanaPag2.setText("Quinta");
+            } else if (semanaN == Calendar.FRIDAY) {
+                lblSemanaPag1.setText("Sexta");
+                lblSemanaPag2.setText("Sexta");
+            } else if (semanaN == Calendar.SATURDAY) {
+                lblSemanaPag1.setText("Sábado");
+                lblSemanaPag2.setText("Sábado");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    /*
+    *Metodo que faz o monitoramento do movimento do mause 
+    *ao passar o ponteiro do mouse pelo label EX.lblD1 é adcionado uma borda no label
+    *e ao sair o ponteiro do mouse do label e removio a borda
+    *e ao clicar no no label são alteradosos labels lblDiaPag1 e 2
+    *e chamao metodo verificaSemana();
+    */
+    public void calendarioEvent() {
+
+        lblD1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD1.getText())) {
+                    lblD1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD1.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD1.getText())){
+                    lblDiaPag1.setText(lblD1.getText());
+                    lblDiaPag2.setText(lblD1.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD1.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+                
+                
+                
+            }
+        });
+        lblD2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD2.getText())) {
+                    lblD2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD2.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD2.getText())){
+                    lblDiaPag1.setText(lblD2.getText());
+                    lblDiaPag2.setText(lblD2.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD2.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD3.getText())) {
+                    lblD3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD3.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD3.getText())){
+                    lblDiaPag1.setText(lblD3.getText());
+                    lblDiaPag2.setText(lblD3.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD3.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD4.getText())) {
+                    lblD4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD4.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD4.getText())){
+                    lblDiaPag1.setText(lblD4.getText());
+                    lblDiaPag2.setText(lblD4.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD4.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD5.getText())) {
+                    lblD5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD5.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD5.getText())){
+                    lblDiaPag1.setText(lblD5.getText());
+                    lblDiaPag2.setText(lblD5.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD5.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD6.getText())) {
+                    lblD6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD6.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD6.getText())){
+                    lblDiaPag1.setText(lblD6.getText());
+                    lblDiaPag2.setText(lblD6.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD6.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD7.getText())) {
+                    lblD7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD7.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD7.getText())){
+                    lblDiaPag1.setText(lblD7.getText());
+                    lblDiaPag2.setText(lblD7.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD7.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD8.getText())) {
+                    lblD8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD8.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD8.getText())){
+                    lblDiaPag1.setText(lblD8.getText());
+                    lblDiaPag2.setText(lblD8.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD8.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD9.getText())) {
+                    lblD9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD9.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD9.getText())){
+                    lblDiaPag1.setText(lblD9.getText());
+                    lblDiaPag2.setText(lblD9.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD9.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD10.getText())) {
+                    lblD10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD10.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD10.getText())){
+                    lblDiaPag1.setText(lblD10.getText());
+                    lblDiaPag2.setText(lblD10.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD10.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD11.getText())) {
+                    lblD11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD11.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD11.getText())){
+                    lblDiaPag1.setText(lblD11.getText());
+                    lblDiaPag2.setText(lblD11.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD11.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD12.getText())) {
+                    lblD12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD12.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD12.getText())){
+                    lblDiaPag1.setText(lblD12.getText());
+                    lblDiaPag2.setText(lblD12.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD12.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD13.getText())) {
+                    lblD13.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD13.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD13.getText())){
+                    lblDiaPag1.setText(lblD13.getText());
+                    lblDiaPag2.setText(lblD13.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD13.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD14.getText())) {
+                    lblD14.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD14.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD14.getText())){
+                    lblDiaPag1.setText(lblD14.getText());
+                    lblDiaPag2.setText(lblD14.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD14.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD15.getText())) {
+                    lblD15.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD15.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD15.getText())){
+                    lblDiaPag1.setText(lblD15.getText());
+                    lblDiaPag2.setText(lblD15.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD15.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD16.getText())) {
+                    lblD16.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD16.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD16.getText())){
+                    lblDiaPag1.setText(lblD16.getText());
+                    lblDiaPag2.setText(lblD16.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD16.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD17.getText())) {
+                    lblD17.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD17.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD17.getText())){
+                    lblDiaPag1.setText(lblD17.getText());
+                    lblDiaPag2.setText(lblD17.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD17.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD18.getText())) {
+                    lblD18.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD18.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD18.getText())){
+                    lblDiaPag1.setText(lblD18.getText());
+                    lblDiaPag2.setText(lblD18.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD18.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD19.getText())) {
+                    lblD19.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD19.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD19.getText())){
+                    lblDiaPag1.setText(lblD19.getText());
+                    lblDiaPag2.setText(lblD19.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD19.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD20.getText())) {
+                    lblD20.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD20.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD20.getText())){
+                    lblDiaPag1.setText(lblD20.getText());
+                    lblDiaPag2.setText(lblD20.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD20.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD21.getText())) {
+                    lblD21.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD21.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD21.getText())){
+                    lblDiaPag1.setText(lblD21.getText());
+                    lblDiaPag2.setText(lblD21.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD21.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD22.getText())) {
+                    lblD22.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD22.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD22.getText())){
+                    lblDiaPag1.setText(lblD22.getText());
+                    lblDiaPag2.setText(lblD22.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD22.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD23.getText())) {
+                    lblD23.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD23.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD23.getText())){
+                    lblDiaPag1.setText(lblD23.getText());
+                    lblDiaPag2.setText(lblD23.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD23.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD24.getText())) {
+                    lblD24.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD24.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD24.getText())){
+                    lblDiaPag1.setText(lblD24.getText());
+                    lblDiaPag2.setText(lblD24.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD24.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD25.getText())) {
+                    lblD25.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD25.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD25.getText())){
+                    lblDiaPag1.setText(lblD25.getText());
+                    lblDiaPag2.setText(lblD25.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD25.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD26.getText())) {
+                    lblD26.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD26.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD26.getText())){
+                    lblDiaPag1.setText(lblD26.getText());
+                    lblDiaPag2.setText(lblD26.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD26.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD27.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD27.getText())) {
+                    lblD27.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD27.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD27.getText())){
+                    lblDiaPag1.setText(lblD27.getText());
+                    lblDiaPag2.setText(lblD27.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD27.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD28.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD28.getText())) {
+                    lblD28.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD28.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD28.getText())){
+                    lblDiaPag1.setText(lblD28.getText());
+                    lblDiaPag2.setText(lblD28.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD28.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD29.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD29.getText())) {
+                    lblD29.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD29.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD29.getText())){
+                    lblDiaPag1.setText(lblD29.getText());
+                    lblDiaPag2.setText(lblD29.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD29.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD30.getText())) {
+                    lblD30.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD30.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD30.getText())){
+                    lblDiaPag1.setText(lblD30.getText());
+                    lblDiaPag2.setText(lblD30.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD30.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD31.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD31.getText())) {
+                    lblD31.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD31.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD31.getText())){
+                    lblDiaPag1.setText(lblD31.getText());
+                    lblDiaPag2.setText(lblD31.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD31.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD32.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD32.getText())) {
+                    lblD32.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD32.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD32.getText())){
+                    lblDiaPag1.setText(lblD32.getText());
+                    lblDiaPag2.setText(lblD32.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD32.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD33.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD33.getText())) {
+                    lblD33.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD33.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD33.getText())){
+                    lblDiaPag1.setText(lblD33.getText());
+                    lblDiaPag2.setText(lblD33.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD33.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD34.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD34.getText())) {
+                    lblD34.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD34.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD34.getText())){
+                    lblDiaPag1.setText(lblD34.getText());
+                    lblDiaPag2.setText(lblD34.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD34.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD35.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD35.getText())) {
+                    lblD35.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD35.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD35.getText())){
+                    lblDiaPag1.setText(lblD35.getText());
+                    lblDiaPag2.setText(lblD35.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD35.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD36.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD36.getText())) {
+                    lblD36.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD36.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD36.getText())){
+                    lblDiaPag1.setText(lblD36.getText());
+                    lblDiaPag2.setText(lblD36.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD36.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD37.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD37.getText())) {
+                    lblD37.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD37.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD37.getText())){
+                    lblDiaPag1.setText(lblD37.getText());
+                    lblDiaPag2.setText(lblD37.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD37.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD38.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD38.getText())) {
+                    lblD38.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD38.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD38.getText())){
+                    lblDiaPag1.setText(lblD38.getText());
+                    lblDiaPag2.setText(lblD38.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD38.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD39.getText())) {
+                    lblD39.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD39.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD39.getText())){
+                    lblDiaPag1.setText(lblD39.getText());
+                    lblDiaPag2.setText(lblD39.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD39.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD40.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD40.getText())) {
+                    lblD40.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD40.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD4.getText())){
+                    lblDiaPag1.setText(lblD40.getText());
+                    lblDiaPag2.setText(lblD40.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD40.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD41.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD41.getText())) {
+                    lblD41.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD41.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD41.getText())){
+                    lblDiaPag1.setText(lblD41.getText());
+                    lblDiaPag2.setText(lblD41.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD41.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+        lblD42.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                if (!"".equals(lblD35.getText())) {
+                    lblD42.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+                }
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblD42.setBorder(null);
+            }
+
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if(!"".equals(lblD42.getText())){
+                    lblDiaPag1.setText(lblD42.getText());
+                    lblDiaPag2.setText(lblD42.getText());
+                    
+                    diaAltera = Integer.parseInt(lblD42.getText());
+                    //diaCliq = 0;
+                    verificaSemana();
+                    //legenda();
+                }
+            }
+        });
+    }
 }
