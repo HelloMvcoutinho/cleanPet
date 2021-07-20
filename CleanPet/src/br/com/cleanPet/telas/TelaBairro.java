@@ -7,6 +7,7 @@ package br.com.cleanPet.telas;
 
 import java.sql.*;
 import br.com.cleanPet.dal.Conexao;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 
 /**
@@ -65,12 +66,13 @@ public class TelaBairro extends javax.swing.JInternalFrame {
     private void adicionar() {
         String sql = "insert into tb_bairro (codigobar,nomebar,idcidade) values(?,?,?)";
         
-        try {
-             
+        try {             
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtBaiCod.getText());
             pst.setString(2, txtBaiNom.getText());
-            pst.setInt(3, (int) cboBaiCid.getSelectedItem());
+            String aux = cboBaiCid.getSelectedItem().toString();
+            //tbCidade.get(cboBaiCid.getSelectedItem());
+//pst.setInt(3, tb);
             //pst.setString(4, cboUsuPerfil.getSelectedItem().toString());
 
             //int idmaria = int.parse(cbfrabicante.SelectedValue.ToString());
@@ -124,7 +126,7 @@ public class TelaBairro extends javax.swing.JInternalFrame {
     }
 
     private void preencheBairro() {
-        //String sql = "select * from tb_cidade order by nomecid";
+        /*String sql = "select * from tb_cidade order by nomecid";
         String sql = "select * from tb_cidade order by nomecid";
         try {
             pst = conexao.prepareStatement(sql);
@@ -137,7 +139,25 @@ public class TelaBairro extends javax.swing.JInternalFrame {
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        }
+        }*/
+        
+        String sql ="select idcid, nomecid from tb_cidade order by nomecid";
+            try{
+                pst = conexao.prepareStatement(sql);
+                rs = pst.executeQuery();
+                if(rs.next()){
+                    cboBaiCid.removeAllItems();
+                    HashMap <String,Integer> tbCidade = new HashMap < String,Integer> ();
+                    do{
+                        cboBaiCid.addItem(rs.getString(2));
+                        tbCidade.put(rs.getString(1),rs.getInt(2)); 
+                        
+                    }while(rs.next());
+                   
+                }
+            }catch(Exception e){
+                
+            }
     }
 
     private void comboId() {

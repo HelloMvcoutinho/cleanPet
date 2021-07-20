@@ -124,7 +124,9 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         lblSemanaPag1.setText("Sexta");
 
         lblDiaPag1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        lblDiaPag1.setText("1");
+        lblDiaPag1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDiaPag1.setText("31");
+        lblDiaPag1.setPreferredSize(new java.awt.Dimension(62, 58));
 
         lblMesPag1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblMesPag1.setText("Janeiro");
@@ -136,7 +138,9 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         lblSemanaPag2.setText("Sexta");
 
         lblDiaPag2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        lblDiaPag2.setText("2");
+        lblDiaPag2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDiaPag2.setText("30");
+        lblDiaPag2.setPreferredSize(new java.awt.Dimension(62, 58));
 
         lblMesPag2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblMesPag2.setText("Janeiro");
@@ -643,20 +647,20 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
                 .addComponent(jLayeredPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnDataHoje, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
                 .addComponent(lblAnoPag1)
                 .addGap(48, 48, 48)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(lblSemanaPag1)
-                    .addComponent(lblDiaPag1)
-                    .addComponent(lblMesPag1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+                    .addComponent(lblMesPag1)
+                    .addComponent(lblDiaPag1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
                 .addComponent(lblAnoPag2)
                 .addGap(48, 48, 48)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(lblSemanaPag2)
-                    .addComponent(lblDiaPag2)
-                    .addComponent(lblMesPag2))
+                    .addComponent(lblMesPag2)
+                    .addComponent(lblDiaPag2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54))
         );
         jLayeredPane1Layout.setVerticalGroup(
@@ -688,16 +692,14 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblMesPag1))))
                     .addComponent(btnDataHoje, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(305, 305, 305))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLayeredPane1)
-                .addContainerGap())
+            .addComponent(jLayeredPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -708,7 +710,7 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDataHojeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDataHojeActionPerformed
-        // TODO add your handling code here:
+        //Botão para ir para data atual 
         iniciaCalendario();
         diaCalendario();
 
@@ -732,7 +734,7 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cboSelMesActionPerformed
 
     private void jSpinner1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSpinner1StateChanged
-        // TODO add your handling code here:
+        // jSpinner utilizado para alterar o mês
         valorSelecao = Integer.parseInt(jSpinner1.getValue().toString());
         int x = cboSelMes.getSelectedIndex();
         int ano = Integer.parseInt(cboSelAno.getSelectedItem().toString());
@@ -850,7 +852,9 @@ public class TelaAgenda extends javax.swing.JInternalFrame {
         //JOptionPane.showMessageDialog(null, DiaFixo + "/" + MesFixo + "/" + AnoFixo);
         int anoMaximo = anoFixo + 50;
         for (int i = 2000; i < anoMaximo; i++) {
-            //há possibilidade de utilizar desta forma cbpSelAno.addItem(""+i);, porém alterei o combobox de Strig para Interger
+            /*há possibilidade de utilizar desta forma 
+            cbpSelAno.addItem(""+i);
+            porém alterei o combobox de Strig para Interger*/
             cboSelAno.addItem(i);
         }
         cboSelAno.setSelectedItem(anoFixo);
