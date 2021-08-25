@@ -36,7 +36,7 @@ public class TelaBairro extends javax.swing.JInternalFrame {
     //método para consultar bairro
     private void consultar() {
         /*"select * from tb_bairro where codigobar=?";*/
-        String sql = "select tb_bairro.idbar,tb_bairro.codigobar,tb_bairro.nomebar,tb_cidade.nomecid from tb_bairro left join tb_cidade on tb_bairro.idcidade = tb_cidade.idcid where codigobar =?";
+        String sql = "select tb_bairro.idbai,tb_bairro.codigobai,tb_bairro.nomebai,tb_cidade.nomecid from tb_bairro left join tb_cidade on tb_bairro.idcidade = tb_cidade.idcid where codigobai =?";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, txtBaiCod.getText());
@@ -58,7 +58,7 @@ public class TelaBairro extends javax.swing.JInternalFrame {
 
     //método para adicionar bairro
     private void adicionar() {
-        String sql = "insert into tb_bairro(codigobar,nomebar,idcidade) values(?,?,?)";
+        String sql = "insert into tb_bairro(codigobai,nomebai,idcidade) values(?,?,?)";
         String aux1 = cboBaiCid.getSelectedItem().toString();
         int aux2 = pegarId(aux1); 
             
@@ -75,7 +75,7 @@ public class TelaBairro extends javax.swing.JInternalFrame {
                 //Faz a confirmação da inserção no DB
                 int adicionado = pst.executeUpdate();
                 if (adicionado > 0) {
-                    JOptionPane.showMessageDialog(null, "Cidade adicionado com sucesso!");
+                    JOptionPane.showMessageDialog(null, "Bairro adicionado com sucesso!");
                     //limpa os campos
                     txtBaiCod.setText(null);
                     txtBaiNom.setText(null);
@@ -88,7 +88,7 @@ public class TelaBairro extends javax.swing.JInternalFrame {
 
     //método para alterar os dados da bairro
     private void alterar() {
-        String sql = "update tb_bairro set nomebar=?,idcidade=? where codigobar=? ";
+        String sql = "update tb_bairro set nomebai=?,idcidade=? where codigobai=? ";
         String aux1 = cboBaiCid.getSelectedItem().toString();
         int aux2 = pegarId(aux1); 
  
@@ -122,7 +122,7 @@ public class TelaBairro extends javax.swing.JInternalFrame {
         //faz confirmação
         int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o bairro?", "Atenção", JOptionPane.YES_OPTION);
         if (confirma == JOptionPane.YES_OPTION) {
-            String sql = "delete from tb_bairro where codigobar=?";
+            String sql = "delete from tb_bairro where codigobai=?";
             try {
                 pst = conexao.prepareStatement(sql);
                 pst.setString(1, txtBaiCod.getText());

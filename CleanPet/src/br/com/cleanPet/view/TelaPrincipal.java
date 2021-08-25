@@ -249,8 +249,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void MenCadUsuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadUsuActionPerformed
         //Vai abrir o form TelaUsuario dentro do desktop pane
         TelaUsuario usuario = new TelaUsuario();
-        usuario.setVisible(true);
+        
         Desktop.add(usuario);
+        usuario.setVisible(true);
     }//GEN-LAST:event_MenCadUsuActionPerformed
 
     private void MenuOpcTroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuOpcTroActionPerformed
