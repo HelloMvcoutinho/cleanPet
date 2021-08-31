@@ -267,30 +267,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void MenCadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadCliActionPerformed
         // Vai abrir o form TelaCliente dentro do desktop pane
         TelaCliente cliente = new TelaCliente();
-        cliente.setVisible(true);
         Desktop.add(cliente);
+        cliente.setVisible(true);
         
     }//GEN-LAST:event_MenCadCliActionPerformed
 
     private void MenCadCidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCadCidActionPerformed
         //// Vai abrir o form TelaCliente dentro do desktop pane
         TelaCidade cidade = new TelaCidade();
-        cidade.setVisible(true);
         Desktop.add(cidade);
+        cidade.setVisible(true);
     }//GEN-LAST:event_MenCadCidActionPerformed
 
     private void MenCidBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenCidBarActionPerformed
         // TODO add your handling code here:
         TelaBairro bairro = new TelaBairro();
-        bairro.setVisible(true);
         Desktop.add(bairro);
+        bairro.setVisible(true);
     }//GEN-LAST:event_MenCidBarActionPerformed
 
     private void MenAgeAgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenAgeAgeActionPerformed
         // TODO add your handling code here:
         TelaAgenda agenda = new TelaAgenda();
-        agenda.setVisible(true);
         Desktop.add(agenda);
+        agenda.setVisible(true);
     }//GEN-LAST:event_MenAgeAgeActionPerformed
 
     /**
