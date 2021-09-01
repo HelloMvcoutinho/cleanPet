@@ -46,33 +46,26 @@
                               <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                               <Component id="btnCliUpdate" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnCliDelete" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="btnCliDelete" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtCliCep" min="-2" pref="106" max="-2" attributes="0"/>
-                                          <Component id="txtCliNumero" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
+                                          <Component id="txtCliNumero" min="-2" pref="52" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="txtCliCep" max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtCliRua" min="-2" pref="393" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="txtCliEmail" min="-2" pref="267" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txtCliFone" min="-2" pref="106" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace pref="168" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="txtCliCod" max="32767" attributes="0"/>
@@ -80,9 +73,22 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               <Component id="txtCliNome" min="-2" pref="451" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="txtCliRua" min="-2" pref="393" max="-2" attributes="0"/>
+                              <EmptySpace pref="227" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="txtCliEmail" min="-2" pref="267" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="txtCliFone" min="-2" pref="101" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -108,7 +114,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -149,9 +155,9 @@
                   <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtCliEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtCliFone" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtCliNumero" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtCliFone" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -219,13 +225,9 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtCliEmail">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCliFone">
-    </Component>
     <Component class="javax.swing.JTextField" name="txtCliNumero">
     </Component>
     <Component class="javax.swing.JTextField" name="txtCliRua">
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtCliCep">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
@@ -394,6 +396,21 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCliCodActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtCliFone">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="(##)#####-####" subtype="-1" type="5"/>
+        </Property>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="txtCliCep">
+      <Properties>
+        <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+          <Format format="#####-###" subtype="-1" type="5"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
